@@ -1,0 +1,498 @@
+<Window x:Class="SputterNewApp.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:c="clr-namespace:SputterNewApp.Controls"
+ xmlns:v="clr-namespace:SputterNewApp.Views"
+ Title="Sputter Control" Style="{StaticResource AppWindow}" Width="1920" Height="1080" MinWidth="1100" MinHeight="720"
+ WindowStartupLocation="CenterScreen" WindowState="Maximized" PreviewKeyDown="HandleFunctionKeys">
+
+ <DockPanel>
+  <Border DockPanel.Dock="Top" Background="{StaticResource TopBarBrush}" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,0,0,1" Padding="16,6" TextElement.Foreground="{StaticResource TopBarTextBrush}">
+   <DockPanel>
+    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+     <TextBlock Text="{Binding State.ConnectionStatusText}" Foreground="{StaticResource TopBarTextBrush}" VerticalAlignment="Center" Margin="0,0,18,0"/>
+     <Button Content="Refresh" Style="{StaticResource TopBarButton}" IsEnabled="{Binding State.IsConnected}" Click="OnRefreshClicked"/>
+     <Button Content="Disconnect" Style="{StaticResource TopBarButton}" IsEnabled="{Binding State.IsConnected}" Click="OnDisconnectClicked" Margin="0"/>
+    </StackPanel>
+    <StackPanel Orientation="Horizontal">
+     <TextBlock Text="SPUTTER KONTROL" Foreground="{StaticResource TopBarTextBrush}" FontSize="17" FontWeight="Bold" Margin="0,0,24,0"/>
+     <Button Content="Connection" Style="{StaticResource TopBarButton}" Click="OpenConnection"/>
+     <Button Content="Manual Read" Style="{StaticResource TopBarButton}" Click="OpenManualRead"/>
+    </StackPanel>
+   </DockPanel>
+  </Border>
+  <Border DockPanel.Dock="Bottom" Background="{StaticResource PanelHeaderBrush}" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,1,0,0" Padding="12,4">
+   <DockPanel>
+    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+     <TextBlock Text="{Binding State.PlcStatusText}" Style="{StaticResource FieldLabel}" Margin="0,0,16,0"/>
+     <TextBlock Text="{Binding State.QcmStatusText}" Style="{StaticResource FieldLabel}" Margin="0,0,16,0"/>
+     <TextBlock Text="{Binding State.PollingStatusText}" Style="{StaticResource FieldLabel}"/>
+    </StackPanel>
+    <TextBlock Text="{Binding State.ConnectionStatusText}" Style="{StaticResource FieldLabel}"/>
+   </DockPanel>
+  </Border>
+  <TabControl x:Name="Pages" Style="{StaticResource NavigationTabs}">
+   <TabItem Header="Process" Tag="Process">
+    <Grid Grid.IsSharedSizeScope="True">
+     <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="0.97*"/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+     </Grid.ColumnDefinitions>
+     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="*"/>
+     </Grid.RowDefinitions>
+     <GroupBox Header="Manuel Start Controls" Margin="0,0,10,0">
+      <DockPanel>
+       <!-- 13 Device Buttons (Top) -->
+       <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding State.Devices}">
+        <ItemsControl.ItemTemplate>
+         <DataTemplate>
+          <Grid Height="30">
+           <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="120"/>
+           </Grid.ColumnDefinitions>
+           <TextBlock Text="{Binding Name}" FontSize="13" VerticalAlignment="Center"/>
+           <Button Grid.Column="1" Content="{Binding Status}" Tag="{Binding Address}" Click="OnDeviceToggleClicked" Style="{StaticResource DeviceButtonStyle}" Margin="0,1.5" HorizontalAlignment="Stretch" ToolTip="Cihaz durumunu değiştir (START / STOP)"/>
+          </Grid>
+         </DataTemplate>
+        </ItemsControl.ItemTemplate>
+       </ItemsControl>
+       
+       <!-- Rotation, Gate Valve, Turbo, Rezistans (Bottom Anchored) -->
+       <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+        <Border Style="{StaticResource Divider}" Margin="0,6"/>
+        <Grid>
+         <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition Width="76"/>
+          <ColumnDefinition Width="40"/>
+         </Grid.ColumnDefinitions>
+         <Grid.RowDefinitions>
+          <RowDefinition Height="31"/>
+          <RowDefinition Height="31"/>
+          <RowDefinition Height="31"/>
+          <RowDefinition Height="31"/>
+         </Grid.RowDefinitions>
+         <TextBlock Text="Rotation Motor" FontSize="13" VerticalAlignment="Center"/>
+         <TextBox Grid.Column="1" Text="{Binding State.RotationSet, UpdateSourceTrigger=PropertyChanged}" KeyDown="OnRotationKeyDown" Style="{StaticResource NumericInput}" Height="26" MinHeight="24" Padding="4,0" VerticalContentAlignment="Center"/>
+         <TextBlock Grid.Column="2" Text="rpm" Margin="5,0" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+         
+         <TextBlock Grid.Row="1" Text="Gate Valve hedef" FontSize="13" VerticalAlignment="Center"/>
+         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding State.GateSet, UpdateSourceTrigger=PropertyChanged}" KeyDown="OnGateKeyDown" Style="{StaticResource NumericInput}" Height="26" MinHeight="24" Padding="4,0" VerticalContentAlignment="Center"/>
+         <TextBlock Grid.Row="1" Grid.Column="2" Text="%" Margin="5,0" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+         
+         <TextBlock Grid.Row="2" Text="Gate Valve durumu" FontSize="13" VerticalAlignment="Center"/>
+          <!-- Salt Okunur Durum Rozeti (Açılıyor/Kapanıyor/Açık/Kapalı Dinamik Durum) -->
+          <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                  CornerRadius="11" Padding="9,2" BorderThickness="1"
+                  Cursor="Arrow"
+                  ToolTip="{Binding State.GateValve.ToolTipText}">
+           <Border.Style>
+            <Style TargetType="Border">
+             <Setter Property="Background" Value="#F1F5F9"/>
+             <Setter Property="BorderBrush" Value="#CBD5E1"/>
+             <Style.Triggers>
+              <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Open">
+               <Setter Property="Background" Value="#DCFCE7"/>
+               <Setter Property="BorderBrush" Value="#86EFAC"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closed">
+               <Setter Property="Background" Value="#F1F5F9"/>
+               <Setter Property="BorderBrush" Value="#CBD5E1"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Opening">
+               <Setter Property="Background" Value="#FEF3C7"/>
+               <Setter Property="BorderBrush" Value="#FDE68A"/>
+              </DataTrigger>
+              <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closing">
+               <Setter Property="Background" Value="#FFEDD5"/>
+               <Setter Property="BorderBrush" Value="#FDBA74"/>
+              </DataTrigger>
+             </Style.Triggers>
+            </Style>
+           </Border.Style>
+           <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Ellipse Width="7" Height="7" Margin="0,0,6,0" VerticalAlignment="Center">
+             <Ellipse.Style>
+              <Style TargetType="Ellipse">
+               <Setter Property="Fill" Value="#94A3B8"/>
+               <Style.Triggers>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Open">
+                 <Setter Property="Fill" Value="#16A34A"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closed">
+                 <Setter Property="Fill" Value="#64748B"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Opening">
+                 <Setter Property="Fill" Value="#D97706"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closing">
+                 <Setter Property="Fill" Value="#EA580C"/>
+                </DataTrigger>
+               </Style.Triggers>
+              </Style>
+             </Ellipse.Style>
+            </Ellipse>
+            <TextBlock FontSize="11.5" FontWeight="SemiBold" VerticalAlignment="Center"
+                       Text="{Binding State.GateValve.StatusText}">
+             <TextBlock.Style>
+              <Style TargetType="TextBlock">
+               <Setter Property="Foreground" Value="#64748B"/>
+               <Style.Triggers>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Open">
+                 <Setter Property="Foreground" Value="#15803D"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closed">
+                 <Setter Property="Foreground" Value="#475569"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Opening">
+                 <Setter Property="Foreground" Value="#B45309"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closing">
+                 <Setter Property="Foreground" Value="#C2410C"/>
+                </DataTrigger>
+               </Style.Triggers>
+              </Style>
+             </TextBlock.Style>
+            </TextBlock>
+           </StackPanel>
+          </Border>
+         
+         <TextBlock Grid.Row="3" Text="Turbo Frequency" FontSize="13" VerticalAlignment="Center"/>
+         <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding State.TurboFrequency}" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+         <TextBlock Grid.Row="3" Grid.Column="2" Text="Hz" Margin="5,0" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        </Grid>
+        <Border Style="{StaticResource Divider}" Margin="0,6"/>
+        <Grid>
+         <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition Width="76"/>
+          <ColumnDefinition Width="64"/>
+         </Grid.ColumnDefinitions>
+         <Grid.RowDefinitions>
+          <RowDefinition Height="31"/>
+          <RowDefinition Height="26"/>
+         </Grid.RowDefinitions>
+         <TextBlock Text="Rezistans (°C)" FontSize="13" VerticalAlignment="Center"/>
+         <TextBox Grid.Column="1" Text="{Binding State.HeaterSet, UpdateSourceTrigger=PropertyChanged}" KeyDown="OnHeaterKeyDown" Style="{StaticResource NumericInput}" Height="26" MinHeight="24" Padding="4,0" Margin="0,0,6,0" VerticalContentAlignment="Center"/>
+         <Button Grid.Column="2" Content="Ayarla" Click="OnHeaterSetClicked" Style="{StaticResource AccentActionButton}" Height="26" MinHeight="24" Margin="0" ToolTip="Hedef sıcaklığı ayarla"/>
+         
+         <TextBlock Grid.Row="1" Text="Read (°C)" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+         <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding State.HeaterRead}" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        </Grid>
+       </StackPanel>
+      </DockPanel>
+     </GroupBox>
+     
+     <c:SourceCard Grid.Column="1" DataContext="{Binding State.Dc}" Margin="0,0,10,0"/>
+     <c:SourceCard Grid.Column="2" DataContext="{Binding State.Rf1}" Margin="0,0,10,0"/>
+     <c:SourceCard Grid.Column="3" DataContext="{Binding State.Rf2}"/>
+     
+     <GroupBox Grid.Row="1" Header="Vacuum Info" Margin="0,8,10,0">
+      <Grid>
+       <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+       </Grid.ColumnDefinitions>
+       <c:ValueReadout Label="Hazne (Torr)" Value="{Binding State.Pressure}" ValueSize="20"/>
+       <c:ValueReadout Grid.Column="1" Label="Capacitance (Torr)" Value="{Binding State.Capacitance}" ValueSize="20"/>
+      </Grid>
+     </GroupBox>
+     
+     <GroupBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Header="QCM Sensor Info" Margin="0,8,0,0">
+      <ItemsControl ItemsSource="{Binding Preview.Sensors}">
+       <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+         <UniformGrid Columns="3"/>
+        </ItemsPanelTemplate>
+       </ItemsControl.ItemsPanel>
+       <ItemsControl.ItemTemplate>
+        <DataTemplate>
+         <Grid Margin="0,0,12,0">
+          <Grid.ColumnDefinitions>
+           <ColumnDefinition Width="65"/>
+           <ColumnDefinition/>
+           <ColumnDefinition/>
+           <ColumnDefinition/>
+          </Grid.ColumnDefinitions>
+          <StackPanel VerticalAlignment="Center">
+           <TextBlock Text="{Binding Source}" FontWeight="Bold" FontSize="14"/>
+           <TextBlock Text="{Binding Port}" FontSize="11" Foreground="{StaticResource TopBarMutedBrush}"/>
+           <TextBlock Text="{Binding Status}" FontSize="10" Foreground="{StaticResource TopBarMutedBrush}"/>
+          </StackPanel>
+          <c:ValueReadout Grid.Column="1" Label="Rate (Å/s)" Value="{Binding Rate}" ValueSize="20"/>
+          <c:ValueReadout Grid.Column="2" Label="Thick (kÅ)" Value="{Binding Thickness}" ValueSize="20"/>
+          <c:ValueReadout Grid.Column="3" Label="Life (%)" Value="{Binding Life}" ValueSize="20"/>
+         </Grid>
+        </DataTemplate>
+       </ItemsControl.ItemTemplate>
+      </ItemsControl>
+     </GroupBox>
+    </Grid>
+   </TabItem>
+   
+   <TabItem Header="Graph" Tag="Graph">
+    <Grid>
+     <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+     </Grid.ColumnDefinitions>
+     <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+      <RowDefinition/>
+     </Grid.RowDefinitions>
+     <DockPanel Grid.ColumnSpan="2" Margin="0,0,0,10">
+      <Button Click="OnExportGraphDataClicked" Style="{StaticResource ActionButton}" DockPanel.Dock="Right" Margin="0" ToolTip="Tüm trend verilerini CSV olarak kaydet">
+       <StackPanel Orientation="Horizontal"><TextBlock Text="⤓ " FontWeight="Bold"/><TextBlock Text="CSV Dışa Aktar"/></StackPanel>
+      </Button>
+      <TextBlock Text="Trend grafikleri" FontSize="17" FontWeight="SemiBold"/>
+      <TextBlock Text="Canlı izleme" Style="{StaticResource FieldLabel}" Margin="16,0"/>
+     </DockPanel>
+     
+     <GroupBox Grid.Row="1" Grid.Column="0" Header="Vacuum (Torr) / Time (s)" Margin="0,0,10,10">
+      <DockPanel>
+       <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+        <Button Content="Live (2m)" Style="{StaticResource ToolButton}"/>
+        <Button Content="All" Style="{StaticResource ToolButton}"/>
+        <Button Content="Freeze" Style="{StaticResource ToolButton}"/>
+        <CheckBox Content="Log" IsChecked="True" Margin="12,0" VerticalAlignment="Center"/>
+       </StackPanel>
+       <c:PreviewChart Kind="Vacuum"/>
+      </DockPanel>
+     </GroupBox>
+     
+     <GroupBox Grid.Row="1" Grid.Column="1" Header="Thickness (kÅ) / Time (s)" Margin="0,0,0,10">
+      <DockPanel>
+       <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+        <Button Content="Live (2m)" Style="{StaticResource ToolButton}"/>
+        <Button Content="All" Style="{StaticResource ToolButton}"/>
+        <Button Content="Freeze" Style="{StaticResource ToolButton}"/>
+       </StackPanel>
+       <c:PreviewChart Kind="Thickness"/>
+      </DockPanel>
+     </GroupBox>
+     
+     <GroupBox Grid.Row="2" Grid.Column="0" Header="Rate (Å/s) / Time (s)" Margin="0,0,10,10">
+      <DockPanel>
+       <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+        <Button Content="Live (2m)" Style="{StaticResource ToolButton}"/>
+        <Button Content="All" Style="{StaticResource ToolButton}"/>
+        <Button Content="Freeze" Style="{StaticResource ToolButton}"/>
+       </StackPanel>
+       <c:PreviewChart Kind="Rate"/>
+      </DockPanel>
+     </GroupBox>
+     
+     <GroupBox Grid.Row="2" Grid.Column="1" Header="Temperature (°C) / Time (s)" Margin="0,0,0,10">
+      <DockPanel>
+       <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Margin="0,10,0,0">
+        <Button Content="Live (2m)" Style="{StaticResource ToolButton}"/>
+        <Button Content="All" Style="{StaticResource ToolButton}"/>
+        <Button Content="Freeze" Style="{StaticResource ToolButton}"/>
+       </StackPanel>
+       <c:PreviewChart Kind="Temperature"/>
+      </DockPanel>
+     </GroupBox>
+    </Grid>
+   </TabItem>
+   
+   <TabItem Header="QCM" Tag="QCM">
+    <Grid>
+     <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="0.95*"/>
+      <ColumnDefinition Width="0.95*"/>
+      <ColumnDefinition Width="1.6*"/>
+      <ColumnDefinition Width="1.05*"/>
+     </Grid.ColumnDefinitions>
+     
+     <GroupBox Header="Material List" Margin="0,0,10,0">
+      <DockPanel>
+       <WrapPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+        <Button Tag="Material" Click="OpenEditor" Style="{StaticResource SuccessToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="+ "/><TextBlock Text="Ekle"/></StackPanel></Button>
+        <Button Tag="Material" Click="OpenEditor" Style="{StaticResource ToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="✎ "/><TextBlock Text="Düzenle"/></StackPanel></Button>
+        <Button Click="OnDeleteMaterialClicked" Style="{StaticResource DangerToolButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="✕ "/><TextBlock Text="Sil"/></StackPanel></Button>
+       </WrapPanel>
+       <DataGrid x:Name="MaterialsGrid" ItemsSource="{Binding Preview.Materials}" SelectedItem="{Binding Preview.SelectedMaterial}">
+        <DataGrid.Columns>
+         <DataGridTextColumn Header="Material" Binding="{Binding Name}" Width="*" MinWidth="110"/>
+         <DataGridTextColumn Header="Density" Binding="{Binding Density}" Width="70"/>
+         <DataGridTextColumn Header="Z-Ratio" Binding="{Binding ZRatio}" Width="68"/>
+        </DataGrid.Columns>
+       </DataGrid>
+      </DockPanel>
+     </GroupBox>
+     
+     <GroupBox Grid.Column="1" Header="Process List" Margin="0,0,10,0">
+      <DockPanel>
+       <WrapPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+        <Button Tag="Process" Click="OpenEditor" Style="{StaticResource SuccessToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="+ "/><TextBlock Text="Ekle"/></StackPanel></Button>
+        <Button Tag="Process" Click="OpenEditor" Style="{StaticResource ToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="✎ "/><TextBlock Text="Düzenle"/></StackPanel></Button>
+        <Button Click="OnDeleteProcessClicked" Style="{StaticResource DangerToolButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="✕ "/><TextBlock Text="Sil"/></StackPanel></Button>
+       </WrapPanel>
+       <DataGrid x:Name="ProcessesGrid" ItemsSource="{Binding Preview.Processes}" SelectedItem="{Binding Preview.SelectedProcess}">
+        <DataGrid.Columns>
+         <DataGridTextColumn Header="Process" Binding="{Binding Name}" Width="*" MinWidth="110"/>
+         <DataGridTextColumn Header="Material" Binding="{Binding Material}" Width="*" MinWidth="90"/>
+         <DataGridTextColumn Header="Tooling" Binding="{Binding Tooling}" Width="70"/>
+        </DataGrid.Columns>
+       </DataGrid>
+      </DockPanel>
+     </GroupBox>
+     
+     <GroupBox Grid.Column="2" Header="Layer List" Margin="0,0,10,0">
+      <DockPanel>
+       <WrapPanel DockPanel.Dock="Bottom" Margin="0,8,0,0">
+        <Button Tag="Layer" Click="OpenEditor" Style="{StaticResource SuccessToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="+ "/><TextBlock Text="Katman Ekle"/></StackPanel></Button>
+        <Button Tag="CoDep" Click="OpenEditor" Style="{StaticResource ActionButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="✦ "/><TextBlock Text="Co-Dep"/></StackPanel></Button>
+        <Button Tag="Layer" Click="OpenEditor" Style="{StaticResource ToolButton}" Margin="0,0,6,0"><StackPanel Orientation="Horizontal"><TextBlock Text="✎ "/><TextBlock Text="Düzenle"/></StackPanel></Button>
+        <Button Click="OnDeleteLayerClicked" Style="{StaticResource DangerToolButton}"><StackPanel Orientation="Horizontal"><TextBlock Text="✕ "/><TextBlock Text="Sil"/></StackPanel></Button>
+       </WrapPanel>
+       <DataGrid x:Name="LayersGrid" ItemsSource="{Binding Preview.Layers}" SelectedItem="{Binding Preview.SelectedLayer}">
+        <DataGrid.Columns>
+         <DataGridTextColumn Header="#" Binding="{Binding Number}" Width="35"/>
+         <DataGridTextColumn Header="Process" Binding="{Binding Process}" Width="*" MinWidth="105"/>
+         <DataGridTextColumn Header="Final (kÅ)" Binding="{Binding Thickness}" Width="85"/>
+         <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="67"/>
+         <DataGridTextColumn Header="Sensor" Binding="{Binding Sensor}" Width="67"/>
+         <DataGridTextColumn Header="Start" Binding="{Binding StartMode}" Width="78"/>
+        </DataGrid.Columns>
+       </DataGrid>
+      </DockPanel>
+     </GroupBox>
+     
+     <Grid Grid.Column="3">
+      <Grid.RowDefinitions>
+       <RowDefinition Height="Auto"/>
+       <RowDefinition Height="*"/>
+       <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <GroupBox Header="Layer Detail" Margin="0,0,0,8">
+       <Grid DataContext="{Binding Preview}">
+        <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="100"/>
+         <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+         <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Material" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding CurrentLayerMaterial.Name, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="Density" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CurrentLayerMaterial.Density, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Text="Z-Ratio" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CurrentLayerMaterial.ZRatio, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Text="Tooling" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CurrentLayerProcess.Tooling, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Text="Final (kÅ)" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedLayer.Thickness, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Text="Source" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding SelectedLayer.Source, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Text="Sensor" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding SelectedLayer.Sensor, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Text="Start Mode" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding SelectedLayer.StartMode, TargetNullValue='—', FallbackValue='—'}" TextWrapping="Wrap" FontWeight="SemiBold" VerticalAlignment="Center"/>
+       </Grid>
+      </GroupBox>
+      
+      <GroupBox Grid.Row="1" Header="Layer Control" Margin="0,0,0,8">
+       <StackPanel>
+        <Button x:Name="btnStartLayer" Content="▶ Start Layer" Click="OnStartLayerClicked" Style="{StaticResource PrimaryButton}" Height="30" Margin="0,0,0,6"/>
+        <Button x:Name="btnNextLayer" Content="Next Layer" Click="OnNextLayerClicked" Style="{StaticResource ToolButton}" Height="28" Margin="0,0,0,6"/>
+        <Button x:Name="btnZeroThickness" Content="Zero Thickness" Click="OnZeroThicknessClicked" Style="{StaticResource ToolButton}" Height="28" Margin="0,0,0,6"/>
+        <Button x:Name="btnRescanQcm" Content="🔄 QCM Tara &amp; Bağlan" Click="OnRescanQcmClicked" Style="{StaticResource ActionButton}" Height="28" Margin="0"/>
+       </StackPanel>
+      </GroupBox>
+      
+      <GroupBox Grid.Row="2" Header="QCM Sensor Info">
+       <DataGrid ItemsSource="{Binding Preview.Sensors}" MinHeight="100">
+        <DataGrid.Columns>
+         <DataGridTextColumn Header="Kaynak" Binding="{Binding Source}" Width="65"/>
+         <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="80"/>
+         <DataGridTextColumn Header="Port" Binding="{Binding Port}" Width="75"/>
+         <DataGridTextColumn Header="Seri No" Binding="{Binding SerialNo}" Width="85"/>
+         <DataGridTextColumn Header="Rate (Å/s)" Binding="{Binding Rate}" Width="*" MinWidth="75"/>
+         <DataGridTextColumn Header="Thick (kÅ)" Binding="{Binding Thickness}" Width="*" MinWidth="75"/>
+         <DataGridTextColumn Header="Life (%)" Binding="{Binding Life}" Width="*" MinWidth="65"/>
+        </DataGrid.Columns>
+       </DataGrid>
+      </GroupBox>
+     </Grid>
+    </Grid>
+   </TabItem>
+   
+   <TabItem Header="Log Event" Tag="Log">
+    <DockPanel>
+     <WrapPanel DockPanel.Dock="Top" Margin="0,0,0,12">
+      <TextBlock Text="Ara" VerticalAlignment="Center" Margin="0,0,8,0"/>
+      <TextBox x:Name="LogSearch" Width="240" TextChanged="FilterLog" Margin="0,0,16,0"/>
+      <TextBlock Text="Tür" VerticalAlignment="Center" Margin="0,0,8,0"/>
+      <ComboBox x:Name="LogLevel" Width="120" SelectedIndex="0" SelectionChanged="FilterLog" Margin="0,0,16,0">
+       <ComboBoxItem Content="Tümü" Tag="All"/>
+       <ComboBoxItem Content="Bilgi" Tag="INFO"/>
+       <ComboBoxItem Content="Uyarı" Tag="WARNING"/>
+       <ComboBoxItem Content="Alarm" Tag="ALARM"/>
+      </ComboBox>
+      <Button Click="OnExportLogClicked" Style="{StaticResource ActionButton}" Margin="0,0,8,0" ToolTip="Logları CSV olarak kaydet">
+       <StackPanel Orientation="Horizontal"><TextBlock Text="⤓ "/><TextBlock Text="CSV Dışa Aktar"/></StackPanel>
+      </Button>
+      <Button Click="OnClearLogClicked" Style="{StaticResource DangerToolButton}" ToolTip="Tüm log kayıtlarını temizle">
+       <StackPanel Orientation="Horizontal"><TextBlock Text="🗑 "/><TextBlock Text="Logları Temizle"/></StackPanel>
+      </Button>
+      <CheckBox x:Name="chkAutoScroll" Content="Auto Scroll" IsChecked="True" VerticalAlignment="Center" Margin="16,0"/>
+     </WrapPanel>
+     <TextBlock x:Name="LogCount" DockPanel.Dock="Bottom" Text="0 kayıt" Style="{StaticResource FieldLabel}" Margin="0,10"/>
+     <DataGrid x:Name="LogGrid" ItemsSource="{Binding Preview.Events}">
+      <DataGrid.Columns>
+       <DataGridTextColumn Header="Time" Binding="{Binding Time}" Width="100"/>
+       <DataGridTextColumn Header="Type" Binding="{Binding Level}" Width="100"/>
+       <DataGridTextColumn Header="Code" Binding="{Binding Code}" Width="100"/>
+       <DataGridTextColumn Header="Message" Binding="{Binding Message}" Width="*" MinWidth="300"/>
+       <DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="130"/>
+       <DataGridTextColumn Header="Registration" Binding="{Binding Registration}" Width="130"/>
+      </DataGrid.Columns>
+     </DataGrid>
+    </DockPanel>
+   </TabItem>
+   
+   <TabItem Header="Debug" Tag="Debug">
+    <DockPanel>
+     <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,12">
+      <Button Content="Bağlantı ayarları" Click="OpenConnection"/>
+      <Button Content="Manuel Read" Click="OpenManualRead"/>
+      <Button Content="Görünümü sıfırla" Click="ResetPreview"/>
+     </StackPanel>
+     <GroupBox Header="Tanılama">
+      <TextBox x:Name="txtDiagnostics" Text="PLC: bağlı değil&#10;STM-2: bağlı değil&#10;Polling: durduruldu" IsReadOnly="True" VerticalContentAlignment="Top" FontFamily="Consolas" FontSize="15" Padding="12" VerticalScrollBarVisibility="Auto"/>
+     </GroupBox>
+    </DockPanel>
+   </TabItem>
+   
+   <TabItem Header="Sputter Şeması" Tag="Sputter">
+    <DockPanel>
+     <DockPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+      <Button Click="OpenSchematic" Style="{StaticResource ActionButton}" DockPanel.Dock="Right" Margin="0">
+       <StackPanel Orientation="Horizontal"><TextBlock Text="⛶ "/><TextBlock Text="Tam Ekran Büyüt"/></StackPanel>
+      </Button>
+      <TextBlock Text="Sistem Şeması &amp; Dijital İkiz (P&amp;ID)" FontWeight="SemiBold" FontSize="17"/>
+     </DockPanel>
+     <Border Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="1" CornerRadius="4">
+      <v:SputterDiagram/>
+     </Border>
+    </DockPanel>
+   </TabItem>
+  </TabControl>
+ </DockPanel>
+</Window>

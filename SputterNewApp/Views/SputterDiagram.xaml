@@ -1,0 +1,1001 @@
+<UserControl x:Class="SputterNewApp.Views.SputterDiagram"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:c="clr-namespace:SputterNewApp.Controls"
+             x:Name="DiagramRoot">
+ <UserControl.Resources>
+  <!-- Temel Renk Paleti (ISA-101 / Endüstriyel Modern HMI) -->
+  <SolidColorBrush x:Key="Outline" Color="#475569"/>
+  <SolidColorBrush x:Key="OutlineLight" Color="#64748B"/>
+  <SolidColorBrush x:Key="PipeStroke" Color="#64748B"/>
+  <SolidColorBrush x:Key="PipeInnerStroke" Color="#E2E8F0"/>
+  <SolidColorBrush x:Key="CardBg" Color="#FFFFFF"/>
+  <SolidColorBrush x:Key="CardBorder" Color="#CBD5E1"/>
+  <SolidColorBrush x:Key="ActiveGreen" Color="#10B981"/>
+  <SolidColorBrush x:Key="ActiveGreenBorder" Color="#059669"/>
+  <SolidColorBrush x:Key="AmberWarning" Color="#F59E0B"/>
+  <SolidColorBrush x:Key="DangerRed" Color="#EF4444"/>
+
+  <!-- Plazma Renk Degradeleri -->
+  <LinearGradientBrush x:Key="RfPlasmaGlow" StartPoint="0.5,1" EndPoint="0.5,0">
+   <GradientStop Color="#009333EA" Offset="0"/>
+   <GradientStop Color="#B3A855F7" Offset="0.3"/>
+   <GradientStop Color="#D906B6D4" Offset="0.8"/>
+   <GradientStop Color="#FF38BDF8" Offset="1"/>
+  </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="DcPlasmaGlow" StartPoint="0.5,1" EndPoint="0.5,0">
+   <GradientStop Color="#00EA580C" Offset="0"/>
+   <GradientStop Color="#B3F97316" Offset="0.3"/>
+   <GradientStop Color="#D9FBBF24" Offset="0.8"/>
+   <GradientStop Color="#FFFDE047" Offset="1"/>
+  </LinearGradientBrush>
+
+  <!-- Vakum Odası Gradyanları (Temiz & Ferah Endüstriyel Renkler) -->
+  <!-- Yüksek Vakum: Berrak mavi iç ışıma -->
+  <RadialGradientBrush x:Key="ChamberHighVacBg" Center="0.5,0.5" RadiusX="0.6" RadiusY="0.6">
+   <GradientStop Color="#F0F9FF" Offset="0"/>
+   <GradientStop Color="#E0F2FE" Offset="0.6"/>
+   <GradientStop Color="#BAE6FD" Offset="1"/>
+  </RadialGradientBrush>
+  
+  <!-- Kaba Vakum: Nötr açık füme -->
+  <LinearGradientBrush x:Key="ChamberRoughVacBg" StartPoint="0,0" EndPoint="0,1">
+   <GradientStop Color="#F8FAFC" Offset="0"/>
+   <GradientStop Color="#E2E8F0" Offset="1"/>
+  </LinearGradientBrush>
+
+  <!-- Atmosfer: Nötr açık çelik grisi -->
+  <LinearGradientBrush x:Key="ChamberAtmoBg" StartPoint="0,0" EndPoint="0,1">
+   <GradientStop Color="#FFFFFF" Offset="0"/>
+   <GradientStop Color="#EAEDF1" Offset="1"/>
+  </LinearGradientBrush>
+
+  <!-- Valf Çizim Temel Stili -->
+  <Style x:Key="DynamicValveShape" TargetType="Path">
+   <Setter Property="Stroke" Value="#64748B"/>
+   <Setter Property="StrokeThickness" Value="2"/>
+   <Setter Property="StrokeLineJoin" Value="Round"/>
+   <Setter Property="Fill" Value="#FFFFFF"/>
+  </Style>
+
+  <!-- Beyaz Temiz Bilgi Kartı Stili -->
+  <Style x:Key="HudCard" TargetType="Border">
+   <Setter Property="Background" Value="#FFFFFF"/>
+   <Setter Property="BorderBrush" Value="#CBD5E1"/>
+   <Setter Property="BorderThickness" Value="1"/>
+   <Setter Property="CornerRadius" Value="4"/>
+   <Setter Property="Padding" Value="7,5"/>
+  </Style>
+ </UserControl.Resources>
+
+ <DockPanel Background="{DynamicResource ScreenBrush}">
+  <!-- 1) ÜST SİSTEM GENEL İZLEME VE GÜVENLİK HUD BARI -->
+  <Border DockPanel.Dock="Top" Background="#FFFFFF" BorderBrush="#CBD5E1" BorderThickness="0,0,0,1" Padding="14,7">
+   <DockPanel>
+    <!-- Sağ Taraf: Mod Seçici (İzleme Modu vs Kumanda Modu) -->
+    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+     <Button Click="ToggleMode_Click" Cursor="Hand" Padding="12,5" Margin="0" BorderThickness="1">
+      <Button.Style>
+       <Style TargetType="Button">
+        <Setter Property="Background" Value="#F1F5F9"/>
+        <Setter Property="BorderBrush" Value="#CBD5E1"/>
+        <Setter Property="Foreground" Value="#334155"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="12.5"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding IsControlMode, ElementName=DiagramRoot}" Value="True">
+          <Setter Property="Background" Value="#FEF3C7"/>
+          <Setter Property="BorderBrush" Value="#F59E0B"/>
+          <Setter Property="Foreground" Value="#B45309"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Button.Style>
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+       <TextBlock VerticalAlignment="Center" Margin="0,0,6,0">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Text" Value="👁"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding IsControlMode, ElementName=DiagramRoot}" Value="True">
+            <Setter Property="Text" Value="⚡"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+       <TextBlock VerticalAlignment="Center">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Text" Value="İZLEME MODU (Salt Okunur)"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding IsControlMode, ElementName=DiagramRoot}" Value="True">
+            <Setter Property="Text" Value="KUMANDA MODU (Etkileşimli)"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </StackPanel>
+     </Button>
+    </StackPanel>
+
+    <!-- Sol Taraf: Canlı Telemetri & Güvenlik Rozetleri -->
+    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+     <!-- Vakum Durum Rozeti -->
+     <Border CornerRadius="4" Padding="8,4" Margin="0,0,10,0" BorderThickness="1">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#F1F5F9"/>
+        <Setter Property="BorderBrush" Value="#CBD5E1"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="HighVacuum">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#86EFAC"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="RoughVacuum">
+          <Setter Property="Background" Value="#FEF3C7"/>
+          <Setter Property="BorderBrush" Value="#FDE68A"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+       <TextBlock Text="● " FontSize="11">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Foreground" Value="#64748B"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="HighVacuum">
+            <Setter Property="Foreground" Value="#16A34A"/>
+           </DataTrigger>
+           <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="RoughVacuum">
+            <Setter Property="Foreground" Value="#D97706"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+       <TextBlock Text="{Binding State.VacuumRegimeText}" FontSize="12" FontWeight="Bold">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Foreground" Value="#475569"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="HighVacuum">
+            <Setter Property="Foreground" Value="#15803D"/>
+           </DataTrigger>
+           <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="RoughVacuum">
+            <Setter Property="Foreground" Value="#B45309"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </StackPanel>
+     </Border>
+
+     <!-- Basınç Değerleri -->
+     <TextBlock Text="Hazne:" Foreground="#64748B" FontSize="12.5" VerticalAlignment="Center" Margin="0,0,4,0"/>
+     <TextBlock Text="{Binding State.Pressure, StringFormat='{}{0} Torr'}" Foreground="#0284C7" FontWeight="Bold" FontSize="13.5" VerticalAlignment="Center" Margin="0,0,14,0"/>
+
+     <TextBlock Text="Proses:" Foreground="#64748B" FontSize="12.5" VerticalAlignment="Center" Margin="0,0,4,0"/>
+     <TextBlock Text="{Binding State.Capacitance, StringFormat='{}{0} Torr'}" Foreground="#1E293B" FontWeight="SemiBold" FontSize="13" VerticalAlignment="Center" Margin="0,0,18,0"/>
+
+     <Border Width="1" Height="20" Background="#CBD5E1" Margin="0,0,18,0"/>
+
+     <!-- Yardımcı Sistemler Rozetleri -->
+     <!-- Chiller -->
+     <Border CornerRadius="3" Padding="6,2" Margin="0,0,8,0" BorderThickness="1">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#F1F5F9"/>
+        <Setter Property="BorderBrush" Value="#CBD5E1"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsChillerActive}" Value="True">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#86EFAC"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <TextBlock FontSize="11" FontWeight="SemiBold">
+       <TextBlock.Style>
+        <Style TargetType="TextBlock">
+         <Setter Property="Text" Value="Chiller: KAPALI"/>
+         <Setter Property="Foreground" Value="#64748B"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsChillerActive}" Value="True">
+           <Setter Property="Text" Value="Chiller: AKTİF (Su OK)"/>
+           <Setter Property="Foreground" Value="#15803D"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </TextBlock.Style>
+      </TextBlock>
+     </Border>
+
+     <!-- Matchbox -->
+     <Border CornerRadius="3" Padding="6,2" Margin="0,0,8,0" BorderThickness="1">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#F1F5F9"/>
+        <Setter Property="BorderBrush" Value="#CBD5E1"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsMatchBoxActive}" Value="True">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#86EFAC"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <TextBlock FontSize="11" FontWeight="SemiBold">
+       <TextBlock.Style>
+        <Style TargetType="TextBlock">
+         <Setter Property="Text" Value="Matchbox: KAPALI"/>
+         <Setter Property="Foreground" Value="#64748B"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsMatchBoxActive}" Value="True">
+           <Setter Property="Text" Value="Matchbox: AÇIK"/>
+           <Setter Property="Foreground" Value="#15803D"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </TextBlock.Style>
+      </TextBlock>
+     </Border>
+
+     <!-- Acil Stop Uyarısı -->
+     <Border CornerRadius="3" Padding="7,2" Margin="0,0,8,0" BorderThickness="1">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsEmergencyStopActive}" Value="True">
+          <Setter Property="Visibility" Value="Visible"/>
+          <Setter Property="Background" Value="#FEE2E2"/>
+          <Setter Property="BorderBrush" Value="#EF4444"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <TextBlock Text="⚠ ACİL STOP BASILI!" Foreground="#DC2626" FontSize="11" FontWeight="Bold"/>
+     </Border>
+    </StackPanel>
+   </DockPanel>
+  </Border>
+
+  <!-- Kumanda Modu Bilgilendirme Şeridi -->
+  <Border DockPanel.Dock="Top" Background="#FFFBEB" Padding="12,3" BorderBrush="#FDE68A" BorderThickness="0,0,0,1">
+   <Border.Style>
+    <Style TargetType="Border">
+     <Setter Property="Visibility" Value="Collapsed"/>
+     <Style.Triggers>
+      <DataTrigger Binding="{Binding IsControlMode, ElementName=DiagramRoot}" Value="True">
+       <Setter Property="Visibility" Value="Visible"/>
+      </DataTrigger>
+     </Style.Triggers>
+    </Style>
+   </Border.Style>
+   <TextBlock Text="⚡ KUMANDA MODU AKTİF: Şema üzerindeki valflere, pompalara, shutter'lara ve ısıtıcı/rotasyon motoruna tıklayarak doğrudan donanım komutu verebilirsiniz."
+              Foreground="#B45309" FontSize="11.5" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+  </Border>
+
+  <!-- 2) ANA DİJİTAL İKİZ VE VEKTÖR ŞEMA TUVALİ -->
+  <Border Background="#F8FAFC" BorderBrush="#CBD5E1" BorderThickness="0,1,0,0">
+   <Viewbox Stretch="Uniform">
+    <Canvas Width="1160" Height="610">
+
+     <!-- A. BORU VE HAT GEOMETRİSİ (Arka Katman) -->
+     <!-- Roughing / Ön Vakum Hattı (Sol) -->
+     <Path Stroke="{StaticResource PipeStroke}" StrokeThickness="12" StrokeLineJoin="Miter" Data="M 285,233 L 285,334 L 176,334 L 176,400"/>
+     <Path Stroke="{StaticResource PipeInnerStroke}" StrokeThickness="6" StrokeLineJoin="Miter" Data="M 285,233 L 285,334 L 176,334 L 176,400"/>
+
+     <!-- Yüksek Vakum Hattı (Sağ) -->
+     <Path Stroke="{StaticResource PipeStroke}" StrokeThickness="12" StrokeLineJoin="Miter" Data="M 760,183 L 916,183 L 916,300 L 974,300 L 974,380 M 760,306 L 974,306"/>
+     <Path Stroke="{StaticResource PipeInnerStroke}" StrokeThickness="6" StrokeLineJoin="Miter" Data="M 760,183 L 916,183 L 916,300 L 974,300 L 974,380 M 760,306 L 974,306"/>
+
+     <!-- Vent ve Basınç Ölçüm Hatları -->
+     <Path Stroke="{StaticResource PipeStroke}" StrokeThickness="10" StrokeLineJoin="Miter" Data="M 758,269 L 1040,269 L 1040,205 M 327,168 L 327,95 M 705,123 L 759,123 L 759,75"/>
+     <Path Stroke="{StaticResource PipeInnerStroke}" StrokeThickness="5" StrokeLineJoin="Miter" Data="M 758,269 L 1040,269 L 1040,205 M 327,168 L 327,95 M 705,123 L 759,123 L 759,75"/>
+
+     <!-- Argon / O2 Gaz Besleme Hattı (Canlı Mavi Çizgi) -->
+     <Path Stroke="#0284C7" StrokeThickness="4" StrokeLineJoin="Round" Data="M 760,345 L 850,345 L 850,540 L 460,540 L 460,490 M 565,540 L 565,490 M 666,540 L 666,490"/>
+     <TextBlock Canvas.Left="856" Canvas.Top="340" Text="Ar / O₂ Gaz Hattı" FontSize="11" FontWeight="Bold" Foreground="#0284C7"/>
+
+     <!-- B. PROSES HAZNESİ GÖVDESİ (Process Chamber Body) -->
+     <Path Stroke="{StaticResource Outline}" StrokeThickness="3.5"
+           Data="M 384,146 L 448,146 L 448,116 L 705,116 L 705,145 L 760,145 L 760,360 L 720,360 L 720,390 L 404,390 L 404,330 L 384,330 Z">
+      <Path.Style>
+       <Style TargetType="Path">
+        <Setter Property="Fill" Value="{StaticResource ChamberAtmoBg}"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="HighVacuum">
+          <Setter Property="Fill" Value="{StaticResource ChamberHighVacBg}"/>
+          <Setter Property="Stroke" Value="#0284C7"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.VacuumRegimeKind}" Value="RoughVacuum">
+          <Setter Property="Fill" Value="{StaticResource ChamberRoughVacBg}"/>
+          <Setter Property="Stroke" Value="#64748B"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Path.Style>
+     </Path>
+
+     <!-- Hazne İçi Vakum Durum Bilgisi & Rozet -->
+     <StackPanel Canvas.Left="485" Canvas.Top="245" HorizontalAlignment="Center">
+      <TextBlock Text="PROSES HAZNESİ" FontSize="13" FontWeight="Bold" Foreground="#475569" HorizontalAlignment="Center"/>
+      <Border CornerRadius="4" Background="#FFFFFF" BorderBrush="#0284C7" BorderThickness="1.5" Padding="12,5" Margin="0,5,0,0">
+       <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <TextBlock Text="{Binding State.Pressure, StringFormat='{}{0} Torr'}" FontSize="15" FontWeight="Bold" Foreground="#0284C7"/>
+       </StackPanel>
+      </Border>
+     </StackPanel>
+
+     <!-- C. PLAZMA IŞIMA ALANLARI (Plasma Discharge Cones) -->
+     <!-- RF1 Plazma Işın Konisi -->
+     <Polygon Points="455,320 495,335 550,225 530,225" Fill="{StaticResource RfPlasmaGlow}" Opacity="0.85">
+      <Polygon.Style>
+       <Style TargetType="Polygon">
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsRf1PlasmaActive}" Value="True">
+          <Setter Property="Visibility" Value="Visible"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Polygon.Style>
+     </Polygon>
+
+     <!-- DC Plazma Işın Konisi -->
+     <Polygon Points="545,335 585,335 580,225 550,225" Fill="{StaticResource DcPlasmaGlow}" Opacity="0.9">
+      <Polygon.Style>
+       <Style TargetType="Polygon">
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsDcPlasmaActive}" Value="True">
+          <Setter Property="Visibility" Value="Visible"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Polygon.Style>
+     </Polygon>
+
+     <!-- RF2 Plazma Işın Konisi -->
+     <Polygon Points="635,335 675,320 600,225 580,225" Fill="{StaticResource RfPlasmaGlow}" Opacity="0.85">
+      <Polygon.Style>
+       <Style TargetType="Polygon">
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsRf2PlasmaActive}" Value="True">
+          <Setter Property="Visibility" Value="Visible"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Polygon.Style>
+     </Polygon>
+
+     <!-- D. SUBSTRAT TUTUCU, ŞAFT, ISITICI VE ROTASYON (Üst Bölge) -->
+     <!-- Şaft Borusu -->
+     <Path Stroke="{StaticResource PipeStroke}" StrokeThickness="10" Data="M 565,116 L 565,65 L 629,65 L 629,52"/>
+     <Path Stroke="{StaticResource PipeInnerStroke}" StrokeThickness="5" Data="M 565,116 L 565,65 L 629,65 L 629,52"/>
+     <Rectangle Canvas.Left="560" Canvas.Top="116" Width="10" Height="70" Fill="#64748B" Stroke="{StaticResource Outline}" StrokeThickness="1.5"/>
+
+     <!-- Isıtıcı Bloğu -->
+     <Rectangle Canvas.Left="508" Canvas.Top="186" Width="115" Height="18" Fill="#475569" Stroke="{StaticResource Outline}" StrokeThickness="2" RadiusX="2" RadiusY="2"/>
+     
+     <!-- Parlayan Isıtıcı Rezistans Teli -->
+     <Path StrokeThickness="2.5" Data="M 511,188 L 526,201 L 541,188 L 556,201 L 571,188 L 586,201 L 601,188 L 616,201">
+      <Path.Style>
+       <Style TargetType="Path">
+        <Setter Property="Stroke" Value="#CBD5E1"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsHeaterActive}" Value="True">
+          <Setter Property="Stroke" Value="#EA580C"/>
+          <Setter Property="StrokeThickness" Value="3.5"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Path.Style>
+     </Path>
+
+     <!-- Substrat Tutucu Plaka (Wafer Carrier) -->
+     <Rectangle Canvas.Left="522" Canvas.Top="215" Width="87" Height="10" Fill="#FFFFFF" Stroke="{StaticResource Outline}" StrokeThickness="2" RadiusX="2" RadiusY="2"/>
+     
+     <!-- Dönen Substrat Diski Göstergesi -->
+     <Border Canvas.Left="553" Canvas.Top="212" Width="24" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center">
+      <Canvas Width="16" Height="16" RenderTransformOrigin="0.5,0.5">
+       <Canvas.RenderTransform>
+        <RotateTransform x:Name="SubstrateRotorTransform" Angle="0"/>
+       </Canvas.RenderTransform>
+       <Ellipse Width="16" Height="16" Fill="#FFFFFF" Stroke="#64748B" StrokeThickness="1.5"/>
+       <Line X1="8" Y1="1" X2="8" Y2="15" Stroke="#0F172A" StrokeThickness="1.5"/>
+       <Line X1="1" Y1="8" X2="15" Y2="8" Stroke="#0F172A" StrokeThickness="1.5"/>
+      </Canvas>
+     </Border>
+
+     <TextBlock Canvas.Left="646" Canvas.Top="186" Text="Substrat" FontWeight="Bold" FontSize="13" Foreground="#1E293B"/>
+     <Border Canvas.Left="646" Canvas.Top="206" Style="{StaticResource HudCard}">
+      <TextBlock Text="{Binding State.HeaterRead, StringFormat='{}{0} °C'}" FontSize="12.5" FontWeight="Bold" Foreground="#EA580C"/>
+     </Border>
+
+     <!-- Bağlantı İletim Çizgileri -->
+     <Path Stroke="#CBD5E1" StrokeThickness="1.5" Data="M 610,220 L 640,220"/>
+     <Path Stroke="#CBD5E1" StrokeThickness="1.5" Data="M 565,22 L 565,10 M 636,22 L 636,10"/>
+
+     <!-- Rotasyon Motoru Kontrolü (M) -->
+     <Border Canvas.Left="420" Canvas.Top="16" Width="40" Height="40" CornerRadius="20" BorderThickness="2" Cursor="Hand" MouseDown="DeviceClick" Tag="100"
+             ToolTip="Substrat Rotasyon Motoru (D100)&#x0a;Hız: RPM Değeri&#x0a;Tıkla: Aç/Kapat (Kumanda Modunda)">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#94A3B8"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsRotationActive}" Value="True">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#10B981"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <Grid>
+       <TextBlock Text="M" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Foreground" Value="#0F172A"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.IsRotationActive}" Value="True">
+            <Setter Property="Foreground" Value="#15803D"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </Grid>
+     </Border>
+     <TextBlock Canvas.Left="470" Canvas.Top="24" Text="Rotasyon" FontSize="11.5" FontWeight="SemiBold" Foreground="#475569"/>
+     <TextBlock Canvas.Left="470" Canvas.Top="38" Text="{Binding State.RotationRpm, StringFormat='{}{0} RPM'}" FontSize="11" Foreground="#0284C7" FontWeight="Bold"/>
+
+     <!-- Isıtıcı Kontrolü (H) -->
+     <Border Canvas.Left="616" Canvas.Top="16" Width="40" Height="40" CornerRadius="20" BorderThickness="2" Cursor="Hand" MouseDown="DeviceClick" Tag="101"
+             ToolTip="Altlık Isıtıcı Rezistansı (D101)&#x0a;Sıcaklık: °C&#x0a;Tıkla: Aç/Kapat (Kumanda Modunda)">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#94A3B8"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsHeaterActive}" Value="True">
+          <Setter Property="Background" Value="#FEE2E2"/>
+          <Setter Property="BorderBrush" Value="#EF4444"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <TextBlock Text="H" FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+       <TextBlock.Style>
+        <Style TargetType="TextBlock">
+         <Setter Property="Foreground" Value="#0F172A"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsHeaterActive}" Value="True">
+           <Setter Property="Foreground" Value="#DC2626"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </TextBlock.Style>
+      </TextBlock>
+     </Border>
+     <TextBlock Canvas.Left="666" Canvas.Top="24" Text="Isıtıcı" FontSize="11.5" FontWeight="SemiBold" Foreground="#475569"/>
+     <TextBlock Canvas.Left="666" Canvas.Top="38" Text="{Binding State.HeaterRead, StringFormat='{}{0} °C'}" FontSize="11" Foreground="#EA580C" FontWeight="Bold"/>
+
+     <!-- E. MAGNETRON KAYNAKLARI (RF1, DC, RF2) VE DİNAMİK SHUTTER'LAR (Alt Bölge) -->
+     <!-- Kaynak Gövde Boruları -->
+     <Path Stroke="{StaticResource Outline}" StrokeThickness="14" Data="M 463,485 L 463,357 L 475,327 M 565,485 L 565,355 M 666,485 L 666,357 L 654,327"/>
+     <Path Stroke="#CBD5E1" StrokeThickness="6" Data="M 463,485 L 463,357 L 475,327 M 565,485 L 565,355 M 666,485 L 666,357 L 654,327"/>
+
+     <!-- Katot Başlıkları (Cathode Guns) -->
+     <Rectangle Canvas.Left="451" Canvas.Top="318" Width="49" Height="24" Fill="#64748B" Stroke="{StaticResource Outline}" StrokeThickness="2">
+      <Rectangle.RenderTransform><RotateTransform Angle="20" CenterX="24" CenterY="12"/></Rectangle.RenderTransform>
+     </Rectangle>
+     <Rectangle Canvas.Left="540" Canvas.Top="335" Width="50" Height="24" Fill="#64748B" Stroke="{StaticResource Outline}" StrokeThickness="2"/>
+     <Rectangle Canvas.Left="629" Canvas.Top="318" Width="49" Height="24" Fill="#64748B" Stroke="{StaticResource Outline}" StrokeThickness="2">
+      <Rectangle.RenderTransform><RotateTransform Angle="-20" CenterX="24" CenterY="12"/></Rectangle.RenderTransform>
+     </Rectangle>
+
+     <!-- FİZİKSEL AÇILIP KAPANAN SHUTTER PADDLE'LARI -->
+     <!-- RF1 Shutter Paddle & Butonu -->
+     <Canvas Canvas.Left="440" Canvas.Top="300" Cursor="Hand" MouseDown="Shutter_Click" Tag="112" ToolTip="RF1 Shutter (Aç/Kapat)">
+      <!-- Shutter Çubuğu -->
+      <Rectangle Width="52" Height="7" Fill="#334155" Stroke="#94A3B8" StrokeThickness="1.5" RenderTransformOrigin="0,0.5">
+       <Rectangle.RenderTransform>
+        <RotateTransform Angle="20"/>
+       </Rectangle.RenderTransform>
+       <Rectangle.Style>
+        <Style TargetType="Rectangle">
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsRf1ShutterOpen}" Value="True">
+           <Setter Property="RenderTransform">
+            <Setter.Value><RotateTransform Angle="-45"/></Setter.Value>
+           </Setter>
+           <Setter Property="Fill" Value="#10B981"/>
+           <Setter Property="Stroke" Value="#059669"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Rectangle.Style>
+      </Rectangle>
+      <!-- Durum Rozeti -->
+      <Border Canvas.Left="-35" Canvas.Top="-18" CornerRadius="3" Padding="5,1.5" BorderThickness="1">
+       <Border.Style>
+        <Style TargetType="Border">
+         <Setter Property="Background" Value="#F1F5F9"/>
+         <Setter Property="BorderBrush" Value="#CBD5E1"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsRf1ShutterOpen}" Value="True">
+           <Setter Property="Background" Value="#DCFCE7"/>
+           <Setter Property="BorderBrush" Value="#86EFAC"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Border.Style>
+       <TextBlock FontSize="9.5" FontWeight="Bold">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Text" Value="SH1: KAPALI"/>
+          <Setter Property="Foreground" Value="#64748B"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.IsRf1ShutterOpen}" Value="True">
+            <Setter Property="Text" Value="SH1: AÇIK"/>
+            <Setter Property="Foreground" Value="#15803D"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </Border>
+     </Canvas>
+
+     <!-- DC Shutter Paddle & Butonu -->
+     <Canvas Canvas.Left="536" Canvas.Top="320" Cursor="Hand" MouseDown="Shutter_Click" Tag="113" ToolTip="DC Shutter (Aç/Kapat)">
+      <Rectangle Width="56" Height="7" Fill="#334155" Stroke="#94A3B8" StrokeThickness="1.5" RenderTransformOrigin="0,0.5">
+       <Rectangle.Style>
+        <Style TargetType="Rectangle">
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsDcShutterOpen}" Value="True">
+           <Setter Property="RenderTransform">
+            <Setter.Value><RotateTransform Angle="-55"/></Setter.Value>
+           </Setter>
+           <Setter Property="Fill" Value="#10B981"/>
+           <Setter Property="Stroke" Value="#059669"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Rectangle.Style>
+      </Rectangle>
+      <!-- Durum Rozeti -->
+      <Border Canvas.Left="8" Canvas.Top="-20" CornerRadius="3" Padding="5,1.5" BorderThickness="1">
+       <Border.Style>
+        <Style TargetType="Border">
+         <Setter Property="Background" Value="#F1F5F9"/>
+         <Setter Property="BorderBrush" Value="#CBD5E1"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsDcShutterOpen}" Value="True">
+           <Setter Property="Background" Value="#DCFCE7"/>
+           <Setter Property="BorderBrush" Value="#86EFAC"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Border.Style>
+       <TextBlock FontSize="9.5" FontWeight="Bold">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Text" Value="SH-DC: KAPALI"/>
+          <Setter Property="Foreground" Value="#64748B"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.IsDcShutterOpen}" Value="True">
+            <Setter Property="Text" Value="SH-DC: AÇIK"/>
+            <Setter Property="Foreground" Value="#15803D"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </Border>
+     </Canvas>
+
+     <!-- RF2 Shutter Paddle & Butonu -->
+     <Canvas Canvas.Left="635" Canvas.Top="300" Cursor="Hand" MouseDown="Shutter_Click" Tag="114" ToolTip="RF2 Shutter (Aç/Kapat)">
+      <Rectangle Width="52" Height="7" Fill="#334155" Stroke="#94A3B8" StrokeThickness="1.5" RenderTransformOrigin="0,0.5">
+       <Rectangle.RenderTransform>
+        <RotateTransform Angle="-20"/>
+       </Rectangle.RenderTransform>
+       <Rectangle.Style>
+        <Style TargetType="Rectangle">
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsRf2ShutterOpen}" Value="True">
+           <Setter Property="RenderTransform">
+            <Setter.Value><RotateTransform Angle="45"/></Setter.Value>
+           </Setter>
+           <Setter Property="Fill" Value="#10B981"/>
+           <Setter Property="Stroke" Value="#059669"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Rectangle.Style>
+      </Rectangle>
+      <!-- Durum Rozeti -->
+      <Border Canvas.Left="42" Canvas.Top="-18" CornerRadius="3" Padding="5,1.5" BorderThickness="1">
+       <Border.Style>
+        <Style TargetType="Border">
+         <Setter Property="Background" Value="#F1F5F9"/>
+         <Setter Property="BorderBrush" Value="#CBD5E1"/>
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.IsRf2ShutterOpen}" Value="True">
+           <Setter Property="Background" Value="#DCFCE7"/>
+           <Setter Property="BorderBrush" Value="#86EFAC"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Border.Style>
+       <TextBlock FontSize="9.5" FontWeight="Bold">
+        <TextBlock.Style>
+         <Style TargetType="TextBlock">
+          <Setter Property="Text" Value="SH2: KAPALI"/>
+          <Setter Property="Foreground" Value="#64748B"/>
+          <Style.Triggers>
+           <DataTrigger Binding="{Binding State.IsRf2ShutterOpen}" Value="True">
+            <Setter Property="Text" Value="SH2: AÇIK"/>
+            <Setter Property="Foreground" Value="#15803D"/>
+           </DataTrigger>
+          </Style.Triggers>
+         </Style>
+        </TextBlock.Style>
+       </TextBlock>
+      </Border>
+     </Canvas>
+
+     <!-- KAYNAK ALT BİLGİ VE TELEMETRİ KARTLARI (RF1, DC, RF2) -->
+     <!-- RF1 Kartı -->
+     <Border Canvas.Left="410" Canvas.Top="485" Width="104" Style="{StaticResource HudCard}" Cursor="Hand" MouseDown="Source_Click" Tag="RF1"
+             ToolTip="RF1 Katot Tabancası &amp; Güç Kaynağı&#x0a;Durum / FwP / RefP / Argon Akışı&#x0a;Tıkla: Başlat/Durdur (Kumanda Modunda)">
+      <StackPanel>
+       <DockPanel>
+        <TextBlock Text="RF1" FontWeight="Bold" FontSize="13" Foreground="#0F172A"/>
+        <TextBlock Text="{Binding State.Rf1.Status}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
+         <TextBlock.Style>
+          <Style TargetType="TextBlock">
+           <Setter Property="Foreground" Value="#64748B"/>
+           <Style.Triggers>
+            <DataTrigger Binding="{Binding State.Rf1.IsActive}" Value="True">
+             <Setter Property="Foreground" Value="#15803D"/>
+            </DataTrigger>
+           </Style.Triggers>
+          </Style>
+         </TextBlock.Style>
+        </TextBlock>
+       </DockPanel>
+       <TextBlock Text="{Binding State.Rf1.Target, StringFormat='{}Hedef: {0}'}" FontSize="10" Foreground="#334155" Margin="0,1"/>
+       <TextBlock Text="{Binding State.Rf1.Read1, StringFormat='{}FwP: {0} W'}" FontSize="11" FontWeight="Bold" Foreground="#0284C7"/>
+       <TextBlock Text="{Binding State.Rf1.Read2, StringFormat='{}RefP: {0} W'}" FontSize="9.5" Foreground="#64748B"/>
+       <!-- Gaz Akış Bilgisi -->
+       <Border Height="1" Background="#E2E8F0" Margin="0,3"/>
+       <DockPanel>
+        <TextBlock Text="Ar:" FontSize="9.5" FontWeight="SemiBold" Foreground="#64748B"/>
+        <TextBlock Text="{Binding State.Rf1.Argon.Actual, StringFormat='{}{0} sccm', FallbackValue='0.0 sccm'}" FontSize="9.5" FontWeight="Bold" Foreground="#0284C7" HorizontalAlignment="Right"/>
+       </DockPanel>
+      </StackPanel>
+     </Border>
+
+     <!-- DC Kartı -->
+     <Border Canvas.Left="518" Canvas.Top="485" Width="104" Style="{StaticResource HudCard}" Cursor="Hand" MouseDown="Source_Click" Tag="DC"
+             ToolTip="DC Magnetron Katot Tabancası &amp; Güç Kaynağı&#x0a;Durum / Güç / Voltaj / Ar &amp; O₂ Akışları&#x0a;Tıkla: Başlat/Durdur (Kumanda Modunda)">
+      <StackPanel>
+       <DockPanel>
+        <TextBlock Text="DC" FontWeight="Bold" FontSize="13" Foreground="#0F172A"/>
+        <TextBlock Text="{Binding State.Dc.Status}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
+         <TextBlock.Style>
+          <Style TargetType="TextBlock">
+           <Setter Property="Foreground" Value="#64748B"/>
+           <Style.Triggers>
+            <DataTrigger Binding="{Binding State.Dc.IsActive}" Value="True">
+             <Setter Property="Foreground" Value="#15803D"/>
+            </DataTrigger>
+           </Style.Triggers>
+          </Style>
+         </TextBlock.Style>
+        </TextBlock>
+       </DockPanel>
+       <TextBlock Text="{Binding State.Dc.Target, StringFormat='{}Hedef: {0}'}" FontSize="10" Foreground="#334155" Margin="0,1"/>
+       <TextBlock Text="{Binding State.Dc.Read1, StringFormat='{}Güç: {0} W'}" FontSize="11" FontWeight="Bold" Foreground="#D97706"/>
+       <TextBlock Text="{Binding State.Dc.Read2, StringFormat='{}Voltaj: {0} V'}" FontSize="9.5" Foreground="#64748B"/>
+       <!-- Gaz Akış Bilgisi -->
+       <Border Height="1" Background="#E2E8F0" Margin="0,3"/>
+       <DockPanel>
+        <TextBlock Text="Ar:" FontSize="9" FontWeight="SemiBold" Foreground="#64748B"/>
+        <TextBlock Text="{Binding State.Dc.Argon.Actual, StringFormat='{}{0} sccm', FallbackValue='0.0 sccm'}" FontSize="9" FontWeight="Bold" Foreground="#0284C7" HorizontalAlignment="Right"/>
+       </DockPanel>
+       <DockPanel Margin="0,1,0,0">
+        <TextBlock Text="O₂:" FontSize="9" FontWeight="SemiBold" Foreground="#64748B"/>
+        <TextBlock Text="{Binding State.Dc.Oxygen.Actual, StringFormat='{}{0} sccm', FallbackValue='0.0 sccm'}" FontSize="9" FontWeight="Bold" Foreground="#EA580C" HorizontalAlignment="Right"/>
+       </DockPanel>
+      </StackPanel>
+     </Border>
+
+     <!-- RF2 Kartı -->
+     <Border Canvas.Left="626" Canvas.Top="485" Width="104" Style="{StaticResource HudCard}" Cursor="Hand" MouseDown="Source_Click" Tag="RF2"
+             ToolTip="RF2 Katot Tabancası &amp; Güç Kaynağı&#x0a;Durum / FwP / RefP / Ar &amp; O₂ Akışları&#x0a;Tıkla: Başlat/Durdur (Kumanda Modunda)">
+      <StackPanel>
+       <DockPanel>
+        <TextBlock Text="RF2" FontWeight="Bold" FontSize="13" Foreground="#0F172A"/>
+        <TextBlock Text="{Binding State.Rf2.Status}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center">
+         <TextBlock.Style>
+          <Style TargetType="TextBlock">
+           <Setter Property="Foreground" Value="#64748B"/>
+           <Style.Triggers>
+            <DataTrigger Binding="{Binding State.Rf2.IsActive}" Value="True">
+             <Setter Property="Foreground" Value="#15803D"/>
+            </DataTrigger>
+           </Style.Triggers>
+          </Style>
+         </TextBlock.Style>
+        </TextBlock>
+       </DockPanel>
+       <TextBlock Text="{Binding State.Rf2.Target, StringFormat='{}Hedef: {0}'}" FontSize="10" Foreground="#334155" Margin="0,1"/>
+       <TextBlock Text="{Binding State.Rf2.Read1, StringFormat='{}FwP: {0} W'}" FontSize="11" FontWeight="Bold" Foreground="#0284C7"/>
+       <TextBlock Text="{Binding State.Rf2.Read2, StringFormat='{}RefP: {0} W'}" FontSize="9.5" Foreground="#64748B"/>
+       <!-- Gaz Akış Bilgisi -->
+       <Border Height="1" Background="#E2E8F0" Margin="0,3"/>
+       <DockPanel>
+        <TextBlock Text="Ar:" FontSize="9" FontWeight="SemiBold" Foreground="#64748B"/>
+        <TextBlock Text="{Binding State.Rf2.Argon.Actual, StringFormat='{}{0} sccm', FallbackValue='0.0 sccm'}" FontSize="9" FontWeight="Bold" Foreground="#0284C7" HorizontalAlignment="Right"/>
+       </DockPanel>
+       <DockPanel Margin="0,1,0,0">
+        <TextBlock Text="O₂:" FontSize="9" FontWeight="SemiBold" Foreground="#64748B"/>
+        <TextBlock Text="{Binding State.Rf2.Oxygen.Actual, StringFormat='{}{0} sccm', FallbackValue='0.0 sccm'}" FontSize="9" FontWeight="Bold" Foreground="#EA580C" HorizontalAlignment="Right"/>
+       </DockPanel>
+      </StackPanel>
+     </Border>
+
+     <!-- F. QCM KALINLIK SENSÖRLERİ -->
+     <Ellipse Canvas.Left="491" Canvas.Top="351" Width="20" Height="20" Fill="#FFFFFF" Stroke="{StaticResource Outline}" StrokeThickness="2"/>
+     <Path Stroke="{StaticResource Outline}" StrokeThickness="2.5" Data="M 494,364 L 508,364 M 501,365 L 501,386"/>
+
+     <Ellipse Canvas.Left="618" Canvas.Top="351" Width="20" Height="20" Fill="#FFFFFF" Stroke="{StaticResource Outline}" StrokeThickness="2"/>
+     <Path Stroke="{StaticResource Outline}" StrokeThickness="2.5" Data="M 621,364 L 635,364 M 628,365 L 628,386"/>
+
+     <!-- QCM Hızlı Bilgi Kartı (Şema İçi) -->
+     <Border Canvas.Left="735" Canvas.Top="380" Style="{StaticResource HudCard}" Width="160">
+      <StackPanel>
+       <TextBlock Text="QCM SENSÖRLERİ (STM-2)" FontSize="10.5" FontWeight="Bold" Foreground="#0284C7"/>
+       <ItemsControl ItemsSource="{Binding Preview.Sensors}">
+        <ItemsControl.ItemTemplate>
+         <DataTemplate>
+          <DockPanel Margin="0,2,0,0">
+           <TextBlock Text="{Binding Source}" FontWeight="Bold" FontSize="10" Width="30" Foreground="#334155"/>
+           <TextBlock Text="{Binding Rate, StringFormat='{}Hız: {0} Å/s'}" FontSize="9.5" Margin="4,0" Foreground="#0F172A"/>
+           <TextBlock Text="{Binding Life, StringFormat='{}Ömür: %{0}'}" FontSize="9" HorizontalAlignment="Right" Foreground="#64748B"/>
+          </DockPanel>
+         </DataTemplate>
+        </ItemsControl.ItemTemplate>
+       </ItemsControl>
+      </StackPanel>
+     </Border>
+
+     <!-- G. LOAD LOCK / TRANSFER KOLU (Sol Taraf) -->
+     <Rectangle Canvas.Left="70" Canvas.Top="168" Width="315" Height="65" Fill="{StaticResource ChamberRoughVacBg}" Stroke="{StaticResource Outline}" StrokeThickness="3" RadiusX="3" RadiusY="3"/>
+     <Rectangle Canvas.Left="58" Canvas.Top="155" Width="14" Height="91" Fill="#CBD5E1" Stroke="{StaticResource Outline}" StrokeThickness="2" RadiusX="2" RadiusY="2"/>
+     <Path Stroke="#64748B" StrokeThickness="6" Data="M 65,193 L 346,193"/>
+     <TextBlock Canvas.Left="120" Canvas.Top="136" Text="LOAD LOCK / TRANSFER" FontSize="12" FontWeight="Bold" Foreground="#334155"/>
+
+     <!-- Transfer Kapağı & Göstergesi -->
+     <Rectangle Canvas.Left="374" Canvas.Top="151" Width="19" Height="100" Fill="#FFFFFF" Stroke="#64748B" StrokeThickness="2.5"/>
+     <TextBlock Canvas.Left="300" Canvas.Top="244" Text="Transfer kapağı" FontSize="11" Foreground="#475569"/>
+     <c:ValveIndicator Canvas.Left="290" Canvas.Top="264" IsOpen="{Binding State.TransferValve.IsOpen}"/>
+
+     <!-- H. ÖN VAKUM / ROUGHING HATTI & SCROLL POMPA (Sol Alt) -->
+     <!-- V1 Roughing Valfi -->
+     <Path Cursor="Hand" MouseDown="DeviceClick" Tag="106"
+           Data="M 271,268 L 299,268 L 285,286 Z M 271,304 L 299,304 L 285,286 Z"
+           ToolTip="V1 Ön Vakum / Roughing Valfi (D106)">
+      <Path.Style>
+       <Style TargetType="Path" BasedOn="{StaticResource DynamicValveShape}">
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.RoughingValve.IsOpen}" Value="True">
+          <Setter Property="Fill" Value="#10B981"/>
+          <Setter Property="Stroke" Value="#059669"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.RoughingValve.IsOpen}" Value="False">
+          <Setter Property="Fill" Value="#FFFFFF"/>
+          <Setter Property="Stroke" Value="#64748B"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Path.Style>
+     </Path>
+     <TextBlock Canvas.Left="145" Canvas.Top="264" Text="V1 roughing valfi" FontSize="11" Foreground="#475569"/>
+     <c:ValveIndicator Canvas.Left="145" Canvas.Top="284" IsOpen="{Binding State.RoughingValve.IsOpen}"/>
+
+     <!-- Scroll Pompa -->
+     <Border Canvas.Left="138" Canvas.Top="388" Width="76" Height="76" CornerRadius="38" BorderThickness="3" Cursor="Hand" MouseDown="DeviceClick" Tag="106"
+             ToolTip="Ön Vakum Scroll Pompası (D106)&#x0a;Tıkla: Başlat/Durdur (Kumanda Modunda)">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#94A3B8"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsScrollPumpActive}" Value="True">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#10B981"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <Grid>
+       <!-- Spiral Simge -->
+       <Path Stroke="#334155" StrokeThickness="2.5" Data="M 20,38 A 18,18 0 1 1 56,38 A 12,12 0 1 1 32,38 A 6,6 0 1 1 44,38" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </Grid>
+     </Border>
+     <TextBlock Canvas.Left="115" Canvas.Top="472" Text="SCROLL POMPA" FontSize="12" FontWeight="Bold" Foreground="#1E293B"/>
+     <TextBlock Canvas.Left="125" Canvas.Top="490" FontSize="11" FontWeight="SemiBold">
+      <TextBlock.Style>
+       <Style TargetType="TextBlock">
+        <Setter Property="Text" Value="DURDURULDU"/>
+        <Setter Property="Foreground" Value="#64748B"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsScrollPumpActive}" Value="True">
+          <Setter Property="Text" Value="ÇALIŞIYOR (Aktif)"/>
+          <Setter Property="Foreground" Value="#15803D"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </TextBlock.Style>
+     </TextBlock>
+
+     <!-- I. YÜKSEK VAKUM HATTI & TURBO POMPA (Sağ Bölge) -->
+     <!-- V2 Gate Valve -->
+     <Canvas Canvas.Left="822" Canvas.Top="169" Cursor="Hand" MouseDown="GateValve_Click" ToolTip="V2 Gate Valve Kumandası (Tıkla)">
+      <Path Data="M 0,0 L 0,28 L 18,14 Z M 36,0 L 36,28 L 18,14 Z">
+       <Path.Style>
+        <Style TargetType="Path" BasedOn="{StaticResource DynamicValveShape}">
+         <Style.Triggers>
+          <DataTrigger Binding="{Binding State.GateValve.IsOpen}" Value="True">
+           <Setter Property="Fill" Value="#10B981"/>
+           <Setter Property="Stroke" Value="#059669"/>
+          </DataTrigger>
+          <DataTrigger Binding="{Binding State.GateValve.IsOpen}" Value="False">
+           <Setter Property="Fill" Value="#FFFFFF"/>
+           <Setter Property="Stroke" Value="#64748B"/>
+          </DataTrigger>
+         </Style.Triggers>
+        </Style>
+       </Path.Style>
+      </Path>
+      <!-- Gate Sürgü Pozisyon Göstergesi (Bar) -->
+      <Rectangle Canvas.Left="15" Canvas.Top="-6" Width="6" Height="40" Fill="#D97706" Stroke="#92400E" StrokeThickness="1" RadiusX="1" RadiusY="1"/>
+     </Canvas>
+     <TextBlock Canvas.Left="780" Canvas.Top="206" Text="V2 Gate Valve" FontSize="11" Foreground="#475569"/>
+     <!-- Gate Valve Durum Rozeti -->
+     <Border Canvas.Left="780" Canvas.Top="226" CornerRadius="4" Padding="6,3" BorderThickness="1">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#F1F5F9"/>
+        <Setter Property="BorderBrush" Value="#CBD5E1"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Open">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#16A34A"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Opening">
+          <Setter Property="Background" Value="#FEF3C7"/>
+          <Setter Property="BorderBrush" Value="#F59E0B"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.GateValve.StateKind}" Value="Closing">
+          <Setter Property="Background" Value="#FFEDD5"/>
+          <Setter Property="BorderBrush" Value="#EA580C"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <StackPanel Orientation="Horizontal">
+       <TextBlock Text="{Binding State.GateValve.StatusText}" FontSize="11" FontWeight="Bold" Foreground="#1E293B"/>
+       <TextBlock Text="{Binding State.GateValve.Position, StringFormat='{} (%{0})'}" FontSize="11" FontWeight="Bold" Foreground="#0284C7"/>
+      </StackPanel>
+     </Border>
+
+     <!-- V3 Bypass (Soft Turbo) Valfi -->
+     <Path Canvas.Left="822" Canvas.Top="292" Cursor="Hand" MouseDown="DeviceClick" Tag="111"
+           Data="M 0,0 L 0,28 L 18,14 Z M 36,0 L 36,28 L 18,14 Z"
+           ToolTip="V3 Bypass (Soft Turbo) Valfi (D111)">
+      <Path.Style>
+       <Style TargetType="Path" BasedOn="{StaticResource DynamicValveShape}">
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.BypassValve.IsOpen}" Value="True">
+          <Setter Property="Fill" Value="#10B981"/>
+          <Setter Property="Stroke" Value="#059669"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.BypassValve.IsOpen}" Value="False">
+          <Setter Property="Fill" Value="#FFFFFF"/>
+          <Setter Property="Stroke" Value="#64748B"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Path.Style>
+     </Path>
+     <TextBlock Canvas.Left="800" Canvas.Top="328" Text="V3 Bypass valfi" FontSize="11" Foreground="#475569"/>
+     <c:ValveIndicator Canvas.Left="800" Canvas.Top="348" IsOpen="{Binding State.BypassValve.IsOpen}"/>
+
+     <!-- Turbo Moleküler Pompa & Dönen Türbin -->
+     <Border Canvas.Left="935" Canvas.Top="365" Width="78" Height="78" CornerRadius="39" BorderThickness="3" Cursor="Hand" MouseDown="DeviceClick" Tag="107"
+             ToolTip="Turbo Moleküler Pompa (D107)&#x0a;Çalışma Frekansı / Türbin Rotoru&#x0a;Tıkla: Başlat/Durdur (Kumanda Modunda)">
+      <Border.Style>
+       <Style TargetType="Border">
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#94A3B8"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.IsTurboSpinning}" Value="True">
+          <Setter Property="Background" Value="#DCFCE7"/>
+          <Setter Property="BorderBrush" Value="#10B981"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Border.Style>
+      <Grid>
+       <!-- Dönen Çok Kanatlı Türbin Rotoru -->
+       <Canvas Width="48" Height="48" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+        <Canvas.RenderTransform>
+         <RotateTransform x:Name="TurboRotorTransform" Angle="0"/>
+        </Canvas.RenderTransform>
+
+        <!-- Kanatçıklar -->
+        <Path Stroke="#1E293B" StrokeThickness="2.5" Data="M 24,4 L 24,44 M 4,24 L 44,24 M 10,10 L 38,38 M 10,38 L 38,10"/>
+        <Ellipse Canvas.Left="18" Canvas.Top="18" Width="12" Height="12" Fill="#334155" Stroke="#CBD5E1" StrokeThickness="1.5"/>
+       </Canvas>
+      </Grid>
+     </Border>
+     <TextBlock Canvas.Left="910" Canvas.Top="452" Text="TURBO POMPA" FontSize="12" FontWeight="Bold" Foreground="#1E293B"/>
+     <TextBlock Canvas.Left="912" Canvas.Top="472" Text="{Binding State.TurboFrequency, StringFormat='{}{0} Hz'}" FontSize="13" FontWeight="Bold" Foreground="#0284C7"/>
+
+     <!-- J. VENT VALFİ VE BASINÇ MANOMETRELERİ -->
+     <!-- Hazne Basınç Sensörü (P1) -->
+     <Ellipse Canvas.Left="311" Canvas.Top="70" Width="34" Height="34" Fill="#FFFFFF" Stroke="{StaticResource Outline}" StrokeThickness="2"/>
+     <TextBlock Canvas.Left="322" Canvas.Top="78" Text="P₁" FontWeight="Bold" FontSize="13" Foreground="#0F172A"/>
+     <TextBlock Canvas.Left="195" Canvas.Top="68" Text="Hazne basıncı" FontSize="11" Foreground="#475569"/>
+     <Border Canvas.Left="195" Canvas.Top="84" Style="{StaticResource HudCard}">
+      <TextBlock Text="{Binding State.Pressure, StringFormat='{}{0} Torr'}" FontSize="12.5" FontWeight="Bold" Foreground="#0284C7"/>
+     </Border>
+
+     <!-- Proses / Kapasitans Basınç Sensörü (Baratron P2) -->
+     <Ellipse Canvas.Left="743" Canvas.Top="50" Width="34" Height="34" Fill="#FFFFFF" Stroke="{StaticResource Outline}" StrokeThickness="2"/>
+     <TextBlock Canvas.Left="754" Canvas.Top="58" Text="P₂" FontWeight="Bold" FontSize="13" Foreground="#0F172A"/>
+     <TextBlock Canvas.Left="785" Canvas.Top="48" Text="Proses (Baratron)" FontSize="11" Foreground="#475569"/>
+     <Border Canvas.Left="785" Canvas.Top="64" Style="{StaticResource HudCard}">
+      <TextBlock Text="{Binding State.Capacitance, StringFormat='{}{0} Torr'}" FontSize="12.5" FontWeight="Bold" Foreground="#1E293B"/>
+     </Border>
+
+     <!-- V4 Vent Valfi -->
+     <Path Canvas.Left="1022" Canvas.Top="185" Cursor="Hand" MouseDown="DeviceClick" Tag="110"
+           Data="M 0,0 L 28,0 L 14,18 Z M 0,36 L 28,36 L 14,18 Z"
+           ToolTip="V4 Hazne Vent Valfi (D110)">
+      <Path.Style>
+       <Style TargetType="Path" BasedOn="{StaticResource DynamicValveShape}">
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding State.VentValve.IsOpen}" Value="True">
+          <Setter Property="Fill" Value="#10B981"/>
+          <Setter Property="Stroke" Value="#059669"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding State.VentValve.IsOpen}" Value="False">
+          <Setter Property="Fill" Value="#FFFFFF"/>
+          <Setter Property="Stroke" Value="#64748B"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Path.Style>
+     </Path>
+     <TextBlock Canvas.Left="976" Canvas.Top="120" Text="V4 Vent valfi" FontSize="11" Foreground="#475569"/>
+     <c:ValveIndicator Canvas.Left="976" Canvas.Top="140" IsOpen="{Binding State.VentValve.IsOpen}"/>
+
+    </Canvas>
+   </Viewbox>
+  </Border>
+ </DockPanel>
+</UserControl>

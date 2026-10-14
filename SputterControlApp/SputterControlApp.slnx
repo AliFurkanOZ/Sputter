@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SputterControlApp.csproj" />
+  <Project Path="UI/SputterControlApp.Wpf/SputterControlApp.Wpf.csproj" />
+</Solution>

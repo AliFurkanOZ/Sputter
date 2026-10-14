@@ -1,0 +1,39 @@
+<Window x:Class="SputterControlApp.Wpf.Views.ConnectionWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Bağlantı — Arayüz önizlemesi" Style="{StaticResource AppWindow}" Width="560" Height="520" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+ <DockPanel>
+  <Border DockPanel.Dock="Top" Background="{StaticResource TopBarBrush}" Padding="20,14">
+   <StackPanel>
+    <TextBlock Text="SPUTTER CONTROL" FontSize="16" FontWeight="Bold" Foreground="{StaticResource TopBarTextBrush}"/>
+    <TextBlock Text="Cihaz bağlantısı" FontSize="12" Foreground="{StaticResource TopBarMutedBrush}" Margin="0,2,0,0"/>
+   </StackPanel>
+  </Border>
+  <Border DockPanel.Dock="Bottom" Background="{StaticResource PanelHeaderBrush}" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,1,0,0" Padding="20,12">
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+    <Button Content="Kapat" Click="CloseWindow" IsCancel="True"/>
+    <Button Content="Bağlan" IsEnabled="False" Style="{StaticResource PrimaryButton}" MinWidth="110" Margin="0"/>
+   </StackPanel>
+  </Border>
+  <StackPanel Margin="20,16">
+   <GroupBox Header="Modbus TCP (PLC)">
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="150"/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="40"/><RowDefinition Height="40"/><RowDefinition Height="40"/></Grid.RowDefinitions>
+     <TextBlock Text="Kayıt numarası" Style="{StaticResource FieldLabel}"/>
+     <TextBox Grid.Column="1" Text="1234"/>
+     <TextBlock Grid.Row="1" Text="IP adresi" Style="{StaticResource FieldLabel}"/>
+     <TextBox Grid.Row="1" Grid.Column="1" Text="192.168.1.5"/>
+     <TextBlock Grid.Row="2" Text="Port" Style="{StaticResource FieldLabel}"/>
+     <TextBox Grid.Row="2" Grid.Column="1" Text="502" Width="100" HorizontalAlignment="Left" Style="{StaticResource NumericInput}"/>
+    </Grid>
+   </GroupBox>
+   <Border Background="{StaticResource InsetBrush}" BorderBrush="{StaticResource DividerBrush}" BorderThickness="1" Padding="12,10" Margin="0,12,0,0">
+    <DockPanel>
+     <Rectangle Style="{StaticResource StateLamp}" VerticalAlignment="Top" Margin="0,3,10,0"/>
+     <TextBlock Text="Bağlı değil" TextWrapping="Wrap" Style="{StaticResource FieldLabel}"/>
+    </DockPanel>
+   </Border>
+  </StackPanel>
+ </DockPanel>
+</Window>

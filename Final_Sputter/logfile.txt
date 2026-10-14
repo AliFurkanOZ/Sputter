@@ -1,0 +1,2 @@
+1|***|2026-09-22 09:28:05.1824|***|23380|***|1|***|INFO|***|HWCONFIG.Form_Main.SaveUserProject|***|Proje başarıyla kaydedildi.\r\nProje dizini: C:\ProgramData\Delta Industrial Automation\ISPSoft_New\Projects\Final_Sputter 
+1|***|2026-09-22 09:34:59.4807|***|25176|***|1|***|INFO|***|HWCONFIG.Form_Main.SaveUserProject|***|Proje başarıyla kaydedildi.\r\nProje dizini: C:\ProgramData\Delta Industrial Automation\ISPSoft_New\Projects\Final_Sputter 

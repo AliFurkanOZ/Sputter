@@ -1,0 +1,91 @@
+<UserControl x:Class="SputterControlApp.Wpf.Controls.SourceCard"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:c="clr-namespace:SputterControlApp.Wpf.Controls">
+ <UserControl.Resources>
+  <BooleanToVisibilityConverter x:Key="VisibleWhenTrue"/>
+  <Style x:Key="Cell" TargetType="TextBox" BasedOn="{StaticResource NumericInput}"><Setter Property="Margin" Value="3,4"/><Setter Property="MinWidth" Value="50"/></Style>
+  <Style x:Key="Head" TargetType="TextBlock" BasedOn="{StaticResource FieldLabel}"><Setter Property="TextWrapping" Value="Wrap"/><Setter Property="Margin" Value="3,0"/><Setter Property="FontSize" Value="13"/></Style>
+ </UserControl.Resources>
+ <GroupBox>
+  <GroupBox.Header><TextBlock Text="{Binding Name, StringFormat='{}{0} Control'}"/></GroupBox.Header>
+  <Grid>
+   <Grid.RowDefinitions><RowDefinition Height="Auto" SharedSizeGroup="{Binding SettingsSizeGroup}"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel Grid.Row="0">
+   <Grid>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="58"/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+    <Grid.RowDefinitions><RowDefinition Height="40"/><RowDefinition Height="42"/><RowDefinition Height="42"/></Grid.RowDefinitions>
+    <TextBlock Grid.Column="1" Text="{Binding SetUnit}" Style="{StaticResource Head}"/>
+    <TextBlock Grid.Column="2" Text="{Binding RampUnit}" Style="{StaticResource Head}"/>
+    <TextBlock Grid.Column="3" Text="Dwell (min)" Style="{StaticResource Head}"/>
+    <TextBlock Grid.Row="1" Text="Step 1" FontWeight="SemiBold"/>
+    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Step1.Setpoint, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 setpoint"/>
+    <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Step1.Ramp, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 ramp"/>
+    <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Step1.Dwell, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 dwell"/>
+    <TextBlock Grid.Row="2" Text="Step 2" FontWeight="SemiBold"/>
+    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Step2.Setpoint, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 setpoint"/>
+    <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Step2.Ramp, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 ramp"/>
+    <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Step2.Dwell, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 dwell"/>
+   </Grid>
+   <Grid Margin="0,10,0,0">
+    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="90"/></Grid.ColumnDefinitions>
+    <Grid.RowDefinitions><RowDefinition Height="38"/><RowDefinition Height="34"/><RowDefinition Height="34"/></Grid.RowDefinitions>
+    <TextBlock Text="Off ramp"/><TextBox Grid.Column="1" Text="{Binding OffRamp, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}"/>
+    <TextBlock Grid.Row="1" Text="Step 1 kalan süre" Style="{StaticResource FieldLabel}"/><TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Step1.Remaining}" Style="{StaticResource MonoText}" HorizontalAlignment="Right"/>
+    <TextBlock Grid.Row="2" Text="Step 2 kalan süre" Style="{StaticResource FieldLabel}"/><TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Step2.Remaining}" Style="{StaticResource MonoText}" HorizontalAlignment="Right"/>
+   </Grid>
+   <Border Style="{StaticResource Divider}"/>
+   <Grid Visibility="{Binding IsDc, Converter={StaticResource VisibleWhenTrue}}" Margin="0,0,0,12">
+    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+    <StackPanel Margin="0,0,6,0"><TextBlock Text="Voltage (V)" Style="{StaticResource Head}"/><TextBox Text="{Binding VoltageSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Margin="0,6,0,0"/></StackPanel>
+    <StackPanel Grid.Column="1" Margin="0,0,6,0"><TextBlock Text="Current (mA)" Style="{StaticResource Head}"/><TextBox Text="{Binding CurrentSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Margin="0,6,0,0"/></StackPanel>
+    <StackPanel Grid.Column="2"><TextBlock Text="Power (W)" Style="{StaticResource Head}"/><TextBox Text="{Binding PowerSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Margin="0,6,0,0"/></StackPanel>
+   </Grid>
+   <Grid Margin="0,0,0,12">
+    <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+    <Button IsEnabled="False" Style="{StaticResource PrimaryButton}" Margin="0,0,6,0"><TextBlock Text="{Binding Name, StringFormat='{}{0} ON'}"/></Button>
+    <Button Grid.Column="1" IsEnabled="False" Margin="0"><TextBlock Text="{Binding Name, StringFormat='{}{0} OFF'}"/></Button>
+   </Grid>
+   <Border Style="{StaticResource Inset}" Padding="9,9">
+    <UniformGrid Columns="3">
+     <c:ValueReadout Label="{Binding ReadLabel1}" Value="{Binding Read1}" ValueSize="24"/>
+     <c:ValueReadout Label="{Binding ReadLabel2}" Value="{Binding Read2}" ValueSize="24"/>
+     <c:ValueReadout Label="{Binding ReadLabel3}" Value="{Binding Read3}" ValueSize="24"/>
+    </UniformGrid>
+   </Border>
+   <Border Style="{StaticResource Divider}"/>
+   <Grid>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+    <Grid.RowDefinitions><RowDefinition Height="40"/><RowDefinition Height="34"/></Grid.RowDefinitions>
+    <TextBlock Text="Target" Margin="0,0,10,0"/>
+    <TextBox Grid.Column="1" Text="{Binding Target}" IsReadOnly="True" Margin="0,0,6,0"/>
+    <Button Grid.Column="2" Content="Seç…" Click="SelectTarget" Style="{StaticResource ToolButton}" Margin="0"/>
+    <TextBlock Grid.Row="1" Text="Used life" Style="{StaticResource FieldLabel}" Margin="0,0,10,0"/>
+    <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding UsedWh, StringFormat='{}{0} Wh'}" HorizontalAlignment="Right" FontWeight="SemiBold"/>
+   </Grid>
+   <Border Style="{StaticResource Divider}"/>
+  </StackPanel>
+  <StackPanel x:Name="MfcSection" Grid.Row="1">
+   <TextBlock Text="MFC Control" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,9"/>
+   <Grid>
+    <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition Width="126"/></Grid.ColumnDefinitions>
+    <Grid.RowDefinitions><RowDefinition Height="42"/><RowDefinition Height="42"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <TextBlock Grid.Column="1" Text="Actual&#10;(sccm)" Style="{StaticResource Head}"/>
+    <TextBlock Grid.Column="2" Text="Setpoint&#10;(sccm)" Style="{StaticResource Head}"/>
+    <TextBlock Grid.Column="3" Text="Valf durumu" Style="{StaticResource Head}" Margin="6,0,0,0"/>
+    <TextBlock Grid.Row="1" Text="Ar" FontWeight="SemiBold"/>
+    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Argon.Actual}" FontWeight="SemiBold" Margin="3,0"/>
+    <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Argon.Setpoint, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Argon setpoint"/>
+    <c:ValveIndicator Grid.Row="1" Grid.Column="3" IsOpen="{Binding Argon.Valve.IsOpen}" Margin="6,4,0,4"/>
+    <Grid Grid.Row="2" Grid.ColumnSpan="4" Height="42" Visibility="{Binding HasOxygen, Converter={StaticResource VisibleWhenTrue}}">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="30"/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition Width="126"/></Grid.ColumnDefinitions>
+     <TextBlock Text="O₂" FontWeight="SemiBold"/>
+     <TextBlock Grid.Column="1" Text="{Binding Oxygen.Actual}" FontWeight="SemiBold" Margin="3,0"/>
+     <TextBox Grid.Column="2" Text="{Binding Oxygen.Setpoint, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Oxygen setpoint"/>
+     <c:ValveIndicator Grid.Column="3" IsOpen="{Binding Oxygen.Valve.IsOpen}" Margin="6,4,0,4"/>
+    </Grid>
+   </Grid>
+  </StackPanel>
+  </Grid>
+ </GroupBox>
+</UserControl>

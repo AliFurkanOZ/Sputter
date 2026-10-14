@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SputterControlApp",
+    "\\SputterNewApp",
+    "\\SputterNewApp\\bin",
+    "\\SputterNewApp\\bin\\Release",
+    "\\SputterNewApp\\Infrastructure",
+    "\\SputterNewApp\\Infrastructure\\Modbus",
+    "\\SputterNewApp\\Infrastructure\\Serial",
+    "\\SputterNewApp\\Seed",
+    "\\SputterNewApp\\Views"
+  ],
+  "PreviewInSolutionExplorer": false
+}

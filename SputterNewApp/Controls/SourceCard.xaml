@@ -1,0 +1,221 @@
+<UserControl x:Class="SputterNewApp.Controls.SourceCard"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:c="clr-namespace:SputterNewApp.Controls">
+ <UserControl.Resources>
+  <BooleanToVisibilityConverter x:Key="VisibleWhenTrue"/>
+  <Style x:Key="Cell" TargetType="TextBox" BasedOn="{StaticResource NumericInput}">
+   <Setter Property="Margin" Value="2,1"/>
+   <Setter Property="MinWidth" Value="45"/>
+   <Setter Property="MinHeight" Value="24"/>
+   <Setter Property="Height" Value="26"/>
+   <Setter Property="FontSize" Value="13"/>
+   <Setter Property="Padding" Value="4,0"/>
+   <Setter Property="VerticalContentAlignment" Value="Center"/>
+  </Style>
+  <Style x:Key="Head" TargetType="TextBlock" BasedOn="{StaticResource FieldLabel}">
+   <Setter Property="TextWrapping" Value="Wrap"/>
+   <Setter Property="Margin" Value="2,0"/>
+   <Setter Property="FontSize" Value="12"/>
+   <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+ </UserControl.Resources>
+ <GroupBox>
+  <GroupBox.Header>
+   <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+    <TextBlock Text="{Binding Name, StringFormat='{}{0} Control'}" VerticalAlignment="Center"/>
+    <Border CornerRadius="3" Padding="6,1" Margin="8,0,0,0" VerticalAlignment="Center">
+     <Border.Style>
+      <Style TargetType="Border">
+       <Setter Property="Background" Value="#E2E8F0"/>
+       <Style.Triggers>
+        <DataTrigger Binding="{Binding IsActive}" Value="True">
+         <Setter Property="Background" Value="#DCFCE7"/>
+        </DataTrigger>
+        <DataTrigger Binding="{Binding IsActive}" Value="{x:Null}">
+         <Setter Property="Background" Value="#FEF3C7"/>
+        </DataTrigger>
+       </Style.Triggers>
+      </Style>
+     </Border.Style>
+     <TextBlock Text="{Binding Status}" FontSize="11" FontWeight="Bold">
+      <TextBlock.Style>
+       <Style TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#64748B"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding IsActive}" Value="True">
+          <Setter Property="Foreground" Value="#15803D"/>
+         </DataTrigger>
+         <DataTrigger Binding="{Binding IsActive}" Value="{x:Null}">
+          <Setter Property="Foreground" Value="#D97706"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </TextBlock.Style>
+     </TextBlock>
+    </Border>
+   </StackPanel>
+  </GroupBox.Header>
+  <Grid>
+   <Grid.RowDefinitions>
+    <RowDefinition Height="Auto" SharedSizeGroup="SourceUpperSectionGroup"/>
+    <RowDefinition Height="Auto" SharedSizeGroup="SourceMfcSectionGroup"/>
+    <RowDefinition Height="*"/>
+   </Grid.RowDefinitions>
+   
+   <!-- Upper Section: Generator Settings, Readouts, Target -->
+   <StackPanel Grid.Row="0">
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="48"/><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="26"/><RowDefinition Height="30"/><RowDefinition Height="30"/></Grid.RowDefinitions>
+     <TextBlock Grid.Column="1" Text="{Binding SetUnit}" Style="{StaticResource Head}"/>
+     <TextBlock Grid.Column="2" Text="{Binding RampUnit}" Style="{StaticResource Head}"/>
+     <TextBlock Grid.Column="3" Text="Dwell (min)" Style="{StaticResource Head}"/>
+     <TextBlock Grid.Row="1" Text="Step 1" FontWeight="SemiBold" VerticalAlignment="Center"/>
+     <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Step1.Setpoint, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" IsEnabled="{Binding IsStep1Enabled}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 setpoint"/>
+     <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Step1.Ramp, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" IsEnabled="{Binding IsStep1Enabled}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 ramp"/>
+     <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding Step1.Dwell, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" IsEnabled="{Binding IsStep1Enabled}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 1 dwell"/>
+     <TextBlock Grid.Row="2" Text="Step 2" FontWeight="SemiBold" VerticalAlignment="Center"/>
+     <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Step2.Setpoint, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 setpoint"/>
+     <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Step2.Ramp, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 ramp"/>
+     <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Step2.Dwell, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" Style="{StaticResource Cell}" AutomationProperties.Name="Step 2 dwell"/>
+    </Grid>
+    
+    <Grid Margin="0,4,0,0">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" MinWidth="110"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="28"/><RowDefinition Height="26"/><RowDefinition Height="26"/></Grid.RowDefinitions>
+     <TextBlock Text="Off ramp" VerticalAlignment="Center"/><TextBox Grid.Column="1" Text="{Binding OffRamp, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Width="85" Height="25" MinHeight="24" Padding="4,0" HorizontalAlignment="Right" VerticalContentAlignment="Center"/>
+     <TextBlock Grid.Row="1" Text="Step 1 kalan süre" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/><TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Step1.Remaining}" Style="{StaticResource MonoText}" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold"/>
+     <TextBlock Grid.Row="2" Text="Step 2 kalan süre" Style="{StaticResource FieldLabel}" VerticalAlignment="Center"/><TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Step2.Remaining}" Style="{StaticResource MonoText}" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold"/>
+    </Grid>
+    <Border Style="{StaticResource Divider}" Margin="0,4"/>
+    
+    <!-- DC Specific Row: Voltage, Current, Power (Fixed Height 48) -->
+    <Grid Height="48" Margin="0,0,0,4">
+     <Grid.Style>
+      <Style TargetType="Grid">
+       <Setter Property="Visibility" Value="Collapsed"/>
+       <Style.Triggers>
+        <DataTrigger Binding="{Binding IsDc}" Value="True">
+         <Setter Property="Visibility" Value="Visible"/>
+        </DataTrigger>
+       </Style.Triggers>
+      </Style>
+     </Grid.Style>
+     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel Margin="0,0,4,0"><TextBlock Text="Voltage (V)" Style="{StaticResource Head}"/><TextBox Text="{Binding VoltageSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center"/></StackPanel>
+     <StackPanel Grid.Column="1" Margin="0,0,4,0"><TextBlock Text="Current (mA)" Style="{StaticResource Head}"/><TextBox Text="{Binding CurrentSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center"/></StackPanel>
+     <StackPanel Grid.Column="2"><TextBlock Text="Power (W)" Style="{StaticResource Head}"/><TextBox Text="{Binding PowerSet, ValidatesOnExceptions=True}" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center"/></StackPanel>
+    </Grid>
+    
+    <!-- RF Specific Row: Frequency, Match Box, Ref. Limit (Same 48px fixed height) -->
+    <Grid Height="48" Margin="0,0,0,4">
+     <Grid.Style>
+      <Style TargetType="Grid">
+       <Setter Property="Visibility" Value="Visible"/>
+       <Style.Triggers>
+        <DataTrigger Binding="{Binding IsDc}" Value="True">
+         <Setter Property="Visibility" Value="Collapsed"/>
+        </DataTrigger>
+       </Style.Triggers>
+      </Style>
+     </Grid.Style>
+     <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+     <StackPanel Margin="0,0,4,0"><TextBlock Text="RF Frekans" Style="{StaticResource Head}"/><TextBox Text="13.56 MHz" IsReadOnly="True" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center" Background="#F4F5F6"/></StackPanel>
+     <StackPanel Grid.Column="1" Margin="0,0,4,0"><TextBlock Text="Match Box" Style="{StaticResource Head}"/><TextBox Text="Auto Match" IsReadOnly="True" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center" Background="#F4F5F6"/></StackPanel>
+     <StackPanel Grid.Column="2"><TextBlock Text="Ref. Limit" Style="{StaticResource Head}"/><TextBox Text="50 W" IsReadOnly="True" Style="{StaticResource NumericInput}" Height="25" MinHeight="24" Padding="4,0" Margin="0,2,0,0" VerticalContentAlignment="Center" Background="#F4F5F6"/></StackPanel>
+    </Grid>
+    
+    <!-- Unified Power / Control Button -->
+    <Button Click="ToggleSource" 
+            IsEnabled="{Binding CanToggle}" 
+            Style="{StaticResource SourceToggleButtonStyle}" 
+            Height="32" 
+            Margin="0,0,0,5" 
+            ToolTip="{Binding ToggleButtonTooltip}">
+     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+      <TextBlock Text="{Binding ToggleButtonIcon}" FontSize="13" Margin="0,0,5,0" VerticalAlignment="Center"/>
+      <TextBlock Text="{Binding ToggleButtonText}" FontWeight="Bold" FontSize="12.5" VerticalAlignment="Center"/>
+     </StackPanel>
+    </Button>
+    
+    <Border Style="{StaticResource Inset}" Padding="6,4" Height="56">
+     <UniformGrid Columns="3">
+      <c:ValueReadout Label="{Binding ReadLabel1}" Value="{Binding Read1}" ValueSize="19"/>
+      <c:ValueReadout Label="{Binding ReadLabel2}" Value="{Binding Read2}" ValueSize="19"/>
+      <c:ValueReadout Label="{Binding ReadLabel3}" Value="{Binding Read3}" ValueSize="19"/>
+     </UniformGrid>
+    </Border>
+    <Border Style="{StaticResource Divider}" Margin="0,4"/>
+    
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="28"/><RowDefinition Height="25"/></Grid.RowDefinitions>
+     <TextBlock Text="Target" Margin="0,0,8,0" VerticalAlignment="Center"/>
+     <TextBox Grid.Column="1" Text="{Binding Target}" IsReadOnly="True" Height="25" MinHeight="24" Padding="4,0" Margin="0,0,4,0" VerticalContentAlignment="Center"/>
+     <Button Grid.Column="2" Content="Seç…" Click="SelectTarget" Style="{StaticResource AccentActionButton}" Height="25" MinHeight="24" Padding="8,0" Margin="0" ToolTip="Hedef materyal seç"/>
+     <TextBlock Grid.Row="1" Text="Used life" Style="{StaticResource FieldLabel}" Margin="0,0,8,0" VerticalAlignment="Center"/>
+     <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding UsedWh, StringFormat='{}{0} Wh'}" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="SemiBold"/>
+    </Grid>
+    <Border Style="{StaticResource Divider}" Margin="0,8,0,6"/>
+   </StackPanel>
+   
+   <!-- Lower Section: MFC Control (Ferah ve genişletilmiş yerleşim) -->
+   <StackPanel Grid.Row="1" Margin="0,2,0,4">
+    <TextBlock Text="MFC Control" FontSize="14" FontWeight="SemiBold" Margin="0,2,0,8"/>
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="34"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+     <Grid.RowDefinitions><RowDefinition Height="36"/><RowDefinition Height="40"/><RowDefinition Height="40"/></Grid.RowDefinitions>
+     <TextBlock Text="Gaz" Style="{StaticResource Head}" Margin="2,0,0,0" VerticalAlignment="Center"/>
+     <TextBlock Grid.Column="1" Text="Actual&#10;(sccm)" Style="{StaticResource Head}" Margin="6,0" VerticalAlignment="Center"/>
+     <TextBlock Grid.Column="2" Text="Setpoint&#10;(sccm)" Style="{StaticResource Head}" Margin="6,0" VerticalAlignment="Center"/>
+     <TextBlock Grid.Column="3" Text="Valf durumu" Style="{StaticResource Head}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+     
+     <!-- Ar Row -->
+     <TextBlock Grid.Row="1" Text="Ar" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center" Margin="2,0,0,0"/>
+     <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Argon.Actual}" FontSize="13" FontWeight="SemiBold" Margin="6,0" VerticalAlignment="Center"/>
+     <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding Argon.Setpoint, ValidatesOnExceptions=True}" KeyDown="OnArgonSetpointKeyDown" Style="{StaticResource Cell}" Height="28" Margin="5,0" VerticalAlignment="Center" AutomationProperties.Name="Argon setpoint"/>
+     <c:ValveIndicator Grid.Row="1" Grid.Column="3" IsOpen="{Binding Argon.Valve.IsOpen}" Cursor="Hand" MouseLeftButtonUp="ToggleArgonValve" Height="28" Margin="10,0,0,0" VerticalAlignment="Center"/>
+     
+     <!-- O2 Row: Visible for DC and RF2 (HasOxygen == True) -->
+     <Grid Grid.Row="2" Grid.ColumnSpan="4" Height="40">
+      <Grid.Style>
+       <Style TargetType="Grid">
+        <Setter Property="Visibility" Value="Collapsed"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding HasOxygen}" Value="True">
+          <Setter Property="Visibility" Value="Visible"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Grid.Style>
+      <Grid.ColumnDefinitions><ColumnDefinition Width="34"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+      <TextBlock Text="O₂" FontSize="13" FontWeight="SemiBold" VerticalAlignment="Center" Margin="2,0,0,0"/>
+      <TextBlock Grid.Column="1" Text="{Binding Oxygen.Actual}" FontSize="13" FontWeight="SemiBold" Margin="6,0" VerticalAlignment="Center"/>
+      <TextBox Grid.Column="2" Text="{Binding Oxygen.Setpoint, ValidatesOnExceptions=True}" KeyDown="OnOxygenSetpointKeyDown" Style="{StaticResource Cell}" Height="28" Margin="5,0" VerticalAlignment="Center" AutomationProperties.Name="Oxygen setpoint"/>
+      <c:ValveIndicator Grid.Column="3" IsOpen="{Binding Oxygen.Valve.IsOpen}" Cursor="Hand" MouseLeftButtonUp="ToggleOxygenValve" Height="28" Margin="10,0,0,0" VerticalAlignment="Center"/>
+     </Grid>
+     
+     <!-- O2 Row: Placeholder for RF1 (HasOxygen == False) with exact same Height="40" -->
+     <Grid Grid.Row="2" Grid.ColumnSpan="4" Height="40">
+      <Grid.Style>
+       <Style TargetType="Grid">
+        <Setter Property="Visibility" Value="Visible"/>
+        <Style.Triggers>
+         <DataTrigger Binding="{Binding HasOxygen}" Value="True">
+          <Setter Property="Visibility" Value="Collapsed"/>
+         </DataTrigger>
+        </Style.Triggers>
+       </Style>
+      </Grid.Style>
+      <Grid.ColumnDefinitions><ColumnDefinition Width="34"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="1*"/><ColumnDefinition Width="130"/></Grid.ColumnDefinitions>
+      <TextBlock Text="O₂" FontSize="13" Foreground="{StaticResource LabelBrush}" VerticalAlignment="Center" Margin="2,0,0,0"/>
+      <TextBlock Grid.Column="1" Text="—" FontSize="13" Foreground="{StaticResource LabelBrush}" Margin="6,0" VerticalAlignment="Center"/>
+      <TextBlock Grid.Column="2" Text="Yok" Foreground="{StaticResource LabelBrush}" FontStyle="Italic" VerticalAlignment="Center" Margin="8,0"/>
+      <TextBlock Grid.Column="3" Text="Hatta bağlı değil" Foreground="{StaticResource LabelBrush}" FontSize="11" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Center"/>
+     </Grid>
+    </Grid>
+   </StackPanel>
+  </Grid>
+ </GroupBox>
+</UserControl>

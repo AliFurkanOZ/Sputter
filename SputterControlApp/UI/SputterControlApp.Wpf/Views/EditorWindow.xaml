@@ -1,0 +1,23 @@
+<Window x:Class="SputterControlApp.Wpf.Views.EditorWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Düzenleme formu — Arayüz önizlemesi" Style="{StaticResource AppWindow}" Width="560" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+ <DockPanel>
+  <Border DockPanel.Dock="Bottom" Background="{StaticResource PanelHeaderBrush}" BorderBrush="{StaticResource PanelBorderBrush}" BorderThickness="0,1,0,0" Padding="20,12">
+   <DockPanel>
+    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+     <Button Content="Kapat" IsCancel="True"/>
+     <Button Content="Kaydet" IsEnabled="False" Style="{StaticResource PrimaryButton}" MinWidth="100" Margin="0"/>
+    </StackPanel>
+    <TextBlock Text="Arayüz modu" Style="{StaticResource FieldLabel}"/>
+   </DockPanel>
+  </Border>
+  <GroupBox x:Name="EditorGroup" Margin="20,16">
+   <DockPanel>
+    <Grid x:Name="Fields">
+     <Grid.ColumnDefinitions><ColumnDefinition Width="170"/><ColumnDefinition/></Grid.ColumnDefinitions>
+    </Grid>
+   </DockPanel>
+  </GroupBox>
+ </DockPanel>
+</Window>

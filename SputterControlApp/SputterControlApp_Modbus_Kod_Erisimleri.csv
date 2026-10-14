@@ -1,0 +1,160 @@
+﻿Kod Erişimleri,Kod Erişimleri,Kod Erişimleri,Kod Erişimleri,Kod Erişimleri,Kod Erişimleri,Kod Erişimleri
+"Her RegisterId referansı, sabit blok okuması ve ham adresli buton bağlantısı kaynak dosya/satır bilgisiyle listelenmiştir. 'Referans' sınıfı, yönü aynı satırdan kesin çıkarılamayan dolaylı kullanımdır.",,,,,,
+,,,,,,
+D Adresi,Register / Aralık,İşlem,Kullanım Türü,Dosya,Satır,Kod / Aralık
+D0,DC_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,36,"=> await SendDeviceCommandOptimisticAsync(""DC"", (ushort)RegisterId.DC_Control_Command, _dcLastStatus, ApplyDcButtonUi);"
+D0,DC_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1801,DepositionSource.DC => (ushort)RegisterId.DC_Control_Command
+D0,DC_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1827,DepositionSource.DC => (ushort)RegisterId.DC_Control_Command
+D0,DC_Control_Command … D9,Okuma,Blok okuma (10 register),Forms/MainForm.SnapshotRead.cs,346,D0–D9
+D0,DC_Control_Command,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,347,"(ushort)RegisterId.DC_Control_Command, 10);"
+D1,DC_Step1_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,610,"getWriteAddr: () => (ushort)RegisterId.DC_Step1_SetW,"
+D1,DC_Step1_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,611,"getReadAddr: () => (ushort)RegisterId.DC_Step1_SetW,"
+D2,DC_Step1_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,619,"getWriteAddr: () => (ushort)RegisterId.DC_Step1_Ramp,"
+D2,DC_Step1_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,620,"getReadAddr: () => (ushort)RegisterId.DC_Step1_Ramp,"
+D3,DC_Step1_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,628,"getWriteAddr: () => (ushort)RegisterId.DC_Step1_Dwell,"
+D3,DC_Step1_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,629,"getReadAddr: () => (ushort)RegisterId.DC_Step1_Dwell,"
+D4,DC_Step2_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,641,"getWriteAddr: () => (ushort)RegisterId.DC_Step2_SetW,"
+D4,DC_Step2_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,642,"getReadAddr: () => (ushort)RegisterId.DC_Step2_SetW,"
+D5,DC_Step2_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,650,"getWriteAddr: () => (ushort)RegisterId.DC_Step2_Ramp,"
+D5,DC_Step2_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,651,"getReadAddr: () => (ushort)RegisterId.DC_Step2_Ramp,"
+D6,DC_Step2_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,659,"getWriteAddr: () => (ushort)RegisterId.DC_Step2_Dwell,"
+D6,DC_Step2_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,660,"getReadAddr: () => (ushort)RegisterId.DC_Step2_Dwell,"
+D7,DC_OffRamp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,670,"getWriteAddr: () => (ushort)RegisterId.DC_OffRamp,"
+D7,DC_OffRamp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,671,"getReadAddr: () => (ushort)RegisterId.DC_OffRamp,"
+D8,DC_Set_Voltage,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,683,"getWriteAddr: () => (ushort)RegisterId.DC_Set_Voltage,"
+D8,DC_Set_Voltage,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,684,"getReadAddr: () => (ushort)RegisterId.DC_Set_Voltage,"
+D9,DC_Set_Current,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,692,"getWriteAddr: () => (ushort)RegisterId.DC_Set_Current,"
+D9,DC_Set_Current,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,693,"getReadAddr: () => (ushort)RegisterId.DC_Set_Current,"
+D10,D1ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,19,const ushort baseAddr = (ushort)RegisterId.D1ActualFlow; // 10
+D10,D1ActualFlow … D89,Okuma,Değişkenle blok okuma (80 register),Forms/MainForm.Polling.cs,19,D10–D89
+D10,D1ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,45,float f1 = ReadF32((ushort)RegisterId.D1ActualFlow);
+D10,D1ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,185,const ushort baseAddr = (ushort)RegisterId.D1ActualFlow; // 10
+D10,D1ActualFlow … D89,Okuma,Değişkenle blok okuma (80 register),Forms/MainForm.SnapshotRead.cs,185,D10–D89
+D12,D1ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,207,float sp1 = ReadF32((ushort)RegisterId.D1ReadSetPoint);
+D12,D1ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,706,"1 => ((ushort)RegisterId.D1WriteSetPoint, (ushort)RegisterId.D1ReadSetPoint),"
+D14,D1WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,706,"1 => ((ushort)RegisterId.D1WriteSetPoint, (ushort)RegisterId.D1ReadSetPoint),"
+D22,D1ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,220,short v1 = ReadI16((ushort)RegisterId.D1ReadValvePosition);
+D22,D1ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,45,"readAddress: (ushort)RegisterId.D1ReadValvePosition,"
+D23,D1WriteValvePosition,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,44,"writeAddress: (ushort)RegisterId.D1WriteValvePosition,"
+D26,D2ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,46,float f2 = ReadF32((ushort)RegisterId.D2ActualFlow);
+D30,D2WriteSetPoint,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,208,float sp2 = ReadF32((ushort)RegisterId.D2WriteSetPoint);
+D30,D2WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,707,"2 => ((ushort)RegisterId.D2WriteSetPoint, (ushort)RegisterId.D2WriteSetPoint),"
+D30,D2WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,707,"2 => ((ushort)RegisterId.D2WriteSetPoint, (ushort)RegisterId.D2WriteSetPoint),"
+D38,D2ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,221,short v2 = ReadI16((ushort)RegisterId.D2ReadValvePosition); // D2 için böyle tanımlı
+D39,D2WriteValvePosition,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,54,"writeAddress: (ushort)RegisterId.D2WriteValvePosition,"
+D39,D2WriteValvePosition,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,55,"readAddress: (ushort)RegisterId.D2WriteValvePosition,"
+D42,D3ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,47,float f3 = ReadF32((ushort)RegisterId.D3ActualFlow);
+D44,D3ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,209,float sp3 = ReadF32((ushort)RegisterId.D3ReadSetPoint);
+D44,D3ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,708,"3 => ((ushort)RegisterId.D3WriteSetPoint, (ushort)RegisterId.D3ReadSetPoint),"
+D46,D3WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,708,"3 => ((ushort)RegisterId.D3WriteSetPoint, (ushort)RegisterId.D3ReadSetPoint),"
+D54,D3ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,222,short v3 = ReadI16((ushort)RegisterId.D3ReadValvePosition);
+D54,D3ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,65,"readAddress: (ushort)RegisterId.D3ReadValvePosition,"
+D55,D3WriteValvePosition,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,64,"writeAddress: (ushort)RegisterId.D3WriteValvePosition,"
+D58,D4ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,48,float f4 = ReadF32((ushort)RegisterId.D4ActualFlow);
+D60,D4ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,210,float sp4 = ReadF32((ushort)RegisterId.D4ReadSetPoint);
+D60,D4ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,709,"4 => ((ushort)RegisterId.D4WriteSetPoint, (ushort)RegisterId.D4ReadSetPoint),"
+D62,D4WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,709,"4 => ((ushort)RegisterId.D4WriteSetPoint, (ushort)RegisterId.D4ReadSetPoint),"
+D70,D4ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,223,short v4 = ReadI16((ushort)RegisterId.D4ReadValvePosition);
+D70,D4ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,75,"readAddress: (ushort)RegisterId.D4ReadValvePosition,"
+D71,D4WriteValvePosition,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,74,"writeAddress: (ushort)RegisterId.D4WriteValvePosition,"
+D74,D5ActualFlow,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,49,float f5 = ReadF32((ushort)RegisterId.D5ActualFlow);
+D76,D5ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,211,float sp5 = ReadF32((ushort)RegisterId.D5ReadSetPoint);
+D76,D5ReadSetPoint,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,710,"5 => ((ushort)RegisterId.D5WriteSetPoint, (ushort)RegisterId.D5ReadSetPoint),"
+D78,D5WriteSetPoint,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,710,"5 => ((ushort)RegisterId.D5WriteSetPoint, (ushort)RegisterId.D5ReadSetPoint),"
+D86,D5ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,224,short v5 = ReadI16((ushort)RegisterId.D5ReadValvePosition);
+D86,D5ReadValvePosition,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,85,"readAddress: (ushort)RegisterId.D5ReadValvePosition,"
+D87,D5WriteValvePosition,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,84,"writeAddress: (ushort)RegisterId.D5WriteValvePosition,"
+D100,Rotation_Motor_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,99,_toolsSvc!.BindOnOffButton(
+D101,Rezistans_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,108,"_toolsSvc!.BindOnOffButton(btnRezistans, 101, 101, 0, 1, ""STOP"", ""START"");"
+D102,RF1_Power,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,109,"_toolsSvc!.BindOnOffButton(btnRF1Power, 102, 102, 0, 1, ""STOP"", ""START"");"
+D103,RF2_Power,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,110,"_toolsSvc!.BindOnOffButton(btnRF2Power, 103, 103, 0, 1, ""STOP"", ""START"");"
+D104,DC_Power,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,111,"_toolsSvc!.BindOnOffButton(btnDCPower, 104, 104, 0, 1, ""STOP"", ""START"");"
+D105,MatchBox_Power,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,112,"_toolsSvc!.BindOnOffButton(btnMatchBoxPower, 105, 105, 0, 1, ""STOP"", ""START"");"
+D106,Scroll_Vakum_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,113,"_toolsSvc!.BindOnOffButton(btnScrollVacuum, 106, 106, 0, 1, ""STOP"", ""START"");"
+D107,Turbo_EVP_Vakum_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,114,"_toolsSvc!.BindOnOffButton(btnTurboVacuum, 107, 107, 0, 1, ""STOP"", ""START"");"
+D108,Chiller_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,115,"_toolsSvc!.BindOnOffButton(btnChiller, 108, 108, 0, 1, ""STOP"", ""START"");"
+D110,Chamber_Valf_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,117,"_toolsSvc!.BindOnOffButton(btnChamber, 110, 110, 0, 1, ""STOP"", ""START"");"
+D112,RF1_Shutter_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,119,"_toolsSvc!.BindOnOffButton(btnRF1Shutter, 112, 112, 0, 1, ""STOP"", ""START"");"
+D113,DC_Shutter_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,120,"_toolsSvc!.BindOnOffButton(btnDCShutter, 113, 113, 0, 1, ""STOP"", ""START"");"
+D114,RF2_Shutter_Start,Okuma + Yazma,Ham adresli buton bağlantısı,Forms/MainForm.Wiring.cs,121,"_toolsSvc!.BindOnOffButton(btnRF2Shutter, 114, 114, 0, 1, ""STOP"", ""START"");"
+D123,TorDegerAux … D128,Okuma,Blok okuma (6 register),Forms/MainForm.Polling.cs,112,D123–D128
+D123,TorDegerAux,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,113,"(ushort)RegisterId.TorDegerAux, 6);"
+D130,RF1_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,30,"=> await SendDeviceCommandOptimisticAsync(""RF1"", (ushort)RegisterId.RF1_Control_Command, _rf1LastStatus, ApplyRf1ButtonUi);"
+D130,RF1_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1799,"DepositionSource.RF1 => (ushort)RegisterId.RF1_Control_Command,"
+D130,RF1_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1825,"DepositionSource.RF1 => (ushort)RegisterId.RF1_Control_Command,"
+D131,RF1_Step1_SetW … D140,Okuma,Blok okuma (10 register),Forms/MainForm.SnapshotRead.cs,292,D131–D140
+D131,RF1_Step1_SetW,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,293,"(ushort)RegisterId.RF1_Step1_SetW, 10);"
+D131,RF1_Step1_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,444,"getWriteAddr: () => (ushort)RegisterId.RF1_Step1_SetW,"
+D131,RF1_Step1_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,445,"getReadAddr: () => (ushort)RegisterId.RF1_Step1_SetW,"
+D132,RF1_Step1_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,453,"getWriteAddr: () => (ushort)RegisterId.RF1_Step1_Ramp,"
+D132,RF1_Step1_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,454,"getReadAddr: () => (ushort)RegisterId.RF1_Step1_Ramp,"
+D133,RF1_Step1_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,462,"getWriteAddr: () => (ushort)RegisterId.RF1_Step1_Dwell,"
+D133,RF1_Step1_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,463,"getReadAddr: () => (ushort)RegisterId.RF1_Step1_Dwell,"
+D134,RF1_Step2_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,475,"getWriteAddr: () => (ushort)RegisterId.RF1_Step2_SetW,"
+D134,RF1_Step2_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,476,"getReadAddr: () => (ushort)RegisterId.RF1_Step2_SetW,"
+D135,RF1_Step2_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,484,"getWriteAddr: () => (ushort)RegisterId.RF1_Step2_Ramp,"
+D135,RF1_Step2_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,485,"getReadAddr: () => (ushort)RegisterId.RF1_Step2_Ramp,"
+D136,RF1_Step2_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,493,"getWriteAddr: () => (ushort)RegisterId.RF1_Step2_Dwell,"
+D136,RF1_Step2_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,494,"getReadAddr: () => (ushort)RegisterId.RF1_Step2_Dwell,"
+D137,RF1_OffRamp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,504,"getWriteAddr: () => (ushort)RegisterId.RF1_OffRamp,"
+D137,RF1_OffRamp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,505,"getReadAddr: () => (ushort)RegisterId.RF1_OffRamp,"
+D138,RF1_FwP … D139,Okuma,Blok okuma (2 register),Forms/MainForm.Polling.cs,167,D138–D139
+D138,RF1_FwP,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,168,"(ushort)RegisterId.RF1_FwP, 2);"
+D140,RF1_Status,Okuma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,77,"_rf1LastStatus = await PollSingleDeviceStatusAsync(""RF1"", (ushort)RegisterId.RF1_Status, _rf1LastStatus, ApplyRf1ButtonUi, StartRf1SequenceIfNotRunning, CancelRf1Sequence);"
+D140,RF1_Status,Okuma,RegisterId referansı,Forms/MainForm.RF1Sequence.cs,49,"var regs = await _modbus!.ReadHoldingRegistersAsync((ushort)RegisterId.RF1_Status, 1);"
+D140,RF1_Status … D140,Okuma,Blok okuma (1 register),Forms/MainForm.RF1Sequence.cs,49,D140–D140
+D150,GateValve_Position,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,244,"var r = await _modbus.ReadHoldingRegistersAsync((ushort)RegisterId.GateValve_Position, 1);"
+D150,GateValve_Position … D150,Okuma,Blok okuma (1 register),Forms/MainForm.SnapshotRead.cs,244,D150–D150
+D150,GateValve_Position,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,291,"getWriteAddr: () => (ushort)RegisterId.GateValve_Position,"
+D150,GateValve_Position,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,292,"getReadAddr: () => (ushort)RegisterId.GateValve_Position,"
+D150,GateValve_Position … D150,Okuma,Blok okuma (1 register),Forms/MainForm.Wiring.cs,330,D150–D150
+D150,GateValve_Position,Referans,RegisterId referansı,Forms/MainForm.Wiring.cs,331,"(ushort)RegisterId.GateValve_Position,"
+D151,RotationMotor_Rpm,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,259,"var r = await _modbus.ReadHoldingRegistersAsync((ushort)RegisterId.RotationMotor_Rpm, 1);"
+D151,RotationMotor_Rpm … D151,Okuma,Blok okuma (1 register),Forms/MainForm.SnapshotRead.cs,259,D151–D151
+D151,RotationMotor_Rpm,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,104,"await _modbus!.WriteSingleRegisterAsync((ushort)RegisterId.RotationMotor_Rpm, rpm);"
+D151,RotationMotor_Rpm,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,308,"getWriteAddr: () => (ushort)RegisterId.RotationMotor_Rpm,"
+D151,RotationMotor_Rpm,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,309,"getReadAddr: () => (ushort)RegisterId.RotationMotor_Rpm,"
+D152,Turbo_Frequency … D152,Okuma,Blok okuma (1 register),Forms/MainForm.Polling.cs,147,D152–D152
+D152,Turbo_Frequency,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,148,"(ushort)RegisterId.Turbo_Frequency, 1);"
+D153,GateValve_Speed,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,342,"writeAddress: (ushort)RegisterId.GateValve_Speed,"
+D153,GateValve_Speed,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,344,readAddress: (ushort)RegisterId.GateValve_Speed);
+D154,GateValve_State … D154,Okuma,Blok okuma (1 register),Forms/MainForm.GateValveState.cs,25,D154–D154
+D154,GateValve_State,Okuma,RegisterId referansı,Forms/MainForm.GateValveState.cs,26,"(ushort)RegisterId.GateValve_State,"
+D163,DC_Read_Voltage … D165,Okuma,Blok okuma (3 register),Forms/MainForm.Polling.cs,230,D163–D165
+D163,DC_Read_Voltage,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,231,"(ushort)RegisterId.DC_Read_Voltage, 3);"
+D163,DC_Read_Voltage … D165,Okuma,Blok okuma (3 register),Forms/MainForm.SnapshotRead.cs,367,D163–D165
+D163,DC_Read_Voltage,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,368,"(ushort)RegisterId.DC_Read_Voltage, 3);"
+D222,DC_Set_Out,Okuma,RegisterId referansı,Forms/MainForm.DCSequence.cs,58,"var regs = await _modbus!.ReadHoldingRegistersAsync((ushort)RegisterId.DC_Set_Out, 1);"
+D222,DC_Set_Out … D222,Okuma,Blok okuma (1 register),Forms/MainForm.DCSequence.cs,58,D222–D222
+D222,DC_Set_Out,Okuma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,79,"_dcLastStatus = await PollSingleDeviceStatusAsync(""DC"", (ushort)RegisterId.DC_Set_Out, _dcLastStatus, ApplyDcButtonUi, StartDcSequenceIfNotRunning, CancelDcSequence);"
+D222,DC_Set_Out … D222,Okuma,Blok okuma (1 register),Forms/MainForm.SnapshotRead.cs,379,D222–D222
+D222,DC_Set_Out,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,380,"(ushort)RegisterId.DC_Set_Out, 1);"
+D280,RF2_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,33,"=> await SendDeviceCommandOptimisticAsync(""RF2"", (ushort)RegisterId.RF2_Control_Command, _rf2LastStatus, ApplyRf2ButtonUi);"
+D280,RF2_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1800,"DepositionSource.RF2 => (ushort)RegisterId.RF2_Control_Command,"
+D280,RF2_Control_Command,Yazma,RegisterId referansı,Forms/MainForm.QcmSensors.cs,1826,"DepositionSource.RF2 => (ushort)RegisterId.RF2_Control_Command,"
+D281,RF2_Step1_SetW … D290,Okuma,Blok okuma (10 register),Forms/MainForm.SnapshotRead.cs,319,D281–D290
+D281,RF2_Step1_SetW,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,320,"(ushort)RegisterId.RF2_Step1_SetW, 10);"
+D281,RF2_Step1_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,525,"getWriteAddr: () => (ushort)RegisterId.RF2_Step1_SetW,"
+D281,RF2_Step1_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,526,"getReadAddr: () => (ushort)RegisterId.RF2_Step1_SetW,"
+D282,RF2_Step1_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,535,"getWriteAddr: () => (ushort)RegisterId.RF2_Step1_Ramp,"
+D282,RF2_Step1_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,536,"getReadAddr: () => (ushort)RegisterId.RF2_Step1_Ramp,"
+D283,RF2_Step1_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,545,"getWriteAddr: () => (ushort)RegisterId.RF2_Step1_Dwell,"
+D283,RF2_Step1_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,546,"getReadAddr: () => (ushort)RegisterId.RF2_Step1_Dwell,"
+D284,RF2_Step2_SetW,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,558,"getWriteAddr: () => (ushort)RegisterId.RF2_Step2_SetW,"
+D284,RF2_Step2_SetW,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,559,"getReadAddr: () => (ushort)RegisterId.RF2_Step2_SetW,"
+D285,RF2_Step2_Ramp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,568,"getWriteAddr: () => (ushort)RegisterId.RF2_Step2_Ramp,"
+D285,RF2_Step2_Ramp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,569,"getReadAddr: () => (ushort)RegisterId.RF2_Step2_Ramp,"
+D286,RF2_Step2_Dwell,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,578,"getWriteAddr: () => (ushort)RegisterId.RF2_Step2_Dwell,"
+D286,RF2_Step2_Dwell,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,579,"getReadAddr: () => (ushort)RegisterId.RF2_Step2_Dwell,"
+D287,RF2_OffRamp,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,589,"getWriteAddr: () => (ushort)RegisterId.RF2_OffRamp,"
+D287,RF2_OffRamp,Okuma,RegisterId referansı,Forms/MainForm.Wiring.cs,590,"getReadAddr: () => (ushort)RegisterId.RF2_OffRamp,"
+D288,RF2_FwP … D289,Okuma,Blok okuma (2 register),Forms/MainForm.Polling.cs,198,D288–D289
+D288,RF2_FwP,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,199,"(ushort)RegisterId.RF2_FwP, 2);"
+D290,RF2_Status,Okuma,RegisterId referansı,Forms/MainForm.DeviceControl.cs,78,"_rf2LastStatus = await PollSingleDeviceStatusAsync(""RF2"", (ushort)RegisterId.RF2_Status, _rf2LastStatus, ApplyRf2ButtonUi, StartRf2SequenceIfNotRunning, CancelRf2Sequence);"
+D292,Ordel_SetValue,Okuma,RegisterId referansı,Forms/MainForm.SnapshotRead.cs,270,"var r = await _modbus.ReadHoldingRegistersAsync((ushort)RegisterId.Ordel_SetValue, 1);"
+D292,Ordel_SetValue … D292,Okuma,Blok okuma (1 register),Forms/MainForm.SnapshotRead.cs,270,D292–D292
+D292,Ordel_SetValue,Yazma,RegisterId referansı,Forms/MainForm.Wiring.cs,407,"await _modbus.WriteSingleRegisterAsync((ushort)RegisterId.Ordel_SetValue, unchecked((ushort)targetRaw));"
+D294,Ordel_Instant_Value … D294,Okuma,Blok okuma (1 register),Forms/MainForm.Polling.cs,262,D294–D294
+D294,Ordel_Instant_Value,Okuma,RegisterId referansı,Forms/MainForm.Polling.cs,263,"(ushort)RegisterId.Ordel_Instant_Value, 1);"
+D350,EmergencyStop,Okuma,RegisterId referansı,Forms/MainForm.EmergencyStop.cs,22,"var regs = await _modbus.ReadHoldingRegistersAsync((ushort)RegisterId.EmergencyStop, 1);"
+D350,EmergencyStop … D350,Okuma,Blok okuma (1 register),Forms/MainForm.EmergencyStop.cs,22,D350–D350

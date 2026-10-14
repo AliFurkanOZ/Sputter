@@ -1,0 +1,408 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Views\\TargetWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Views\\TargetWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Controls\\RangeBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Controls\\RangeBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\WorkspaceState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Models\\WorkspaceState.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\PreviewData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterNewApp\\Models\\PreviewData.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\ConnectionSettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Models\\ConnectionSettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\AppData\\Local\\Temp\\.vsdbgsrc\\91b8eab688dba73dc7b179fffb2179670850a52b1cbbd82a2b0536ca94116ea9\\PropertyPathWorker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\SetableToolsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\SetableToolsService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UserStorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\UserStorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UiTaskScheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\UiTaskScheduler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\STM2Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\STM2Client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\MultiStm2Manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\MultiStm2Manager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\LogService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogEvent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\LogEvent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\IModbusClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\IModbusClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Registers\\RegisterMap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Registers\\RegisterMap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Core\\Models\\Models.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\ProcessEditForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Forms\\ProcessEditForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\MainForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\Forms\\MainForm.Designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Stm2Client.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs",
+              "RelativeToolTip": "SputterNewApp\\Infrastructure\\Serial\\Stm2Client.cs",
+              "ViewState": "AgIAADgBAAAAAAAAAAAWwEEBAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-12T10:18:11.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TargetWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Views\\TargetWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Views\\TargetWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Views\\TargetWindow.xaml.cs",
+              "RelativeToolTip": "SputterNewApp\\Views\\TargetWindow.xaml.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAqwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-09T08:41:32.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MultiStm2Manager.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\MultiStm2Manager.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\MultiStm2Manager.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\MultiStm2Manager.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\MultiStm2Manager.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:19:21.997Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LogService.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogService.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\LogService.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogService.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\LogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:13:48.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NModbusTcpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\NModbusTcpClientService.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:13:50.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PreviewData.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\PreviewData.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Models\\PreviewData.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\PreviewData.cs",
+              "RelativeToolTip": "SputterNewApp\\Models\\PreviewData.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T11:14:54.234Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SetableToolsService.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\SetableToolsService.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\SetableToolsService.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\SetableToolsService.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\SetableToolsService.cs",
+              "ViewState": "AgIAAIsCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:13:52.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NModbusTcpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs",
+              "RelativeToolTip": "SputterNewApp\\Infrastructure\\Modbus\\NModbusTcpClientService.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAYwKoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T11:24:13.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PropertyPathWorker.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\AppData\\Local\\Temp\\.vsdbgsrc\\91b8eab688dba73dc7b179fffb2179670850a52b1cbbd82a2b0536ca94116ea9\\PropertyPathWorker.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\91b8eab688dba73dc7b179fffb2179670850a52b1cbbd82a2b0536ca94116ea9\\PropertyPathWorker.cs",
+              "ToolTip": "C:\\Users\\onure\\AppData\\Local\\Temp\\.vsdbgsrc\\91b8eab688dba73dc7b179fffb2179670850a52b1cbbd82a2b0536ca94116ea9\\PropertyPathWorker.cs",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\91b8eab688dba73dc7b179fffb2179670850a52b1cbbd82a2b0536ca94116ea9\\PropertyPathWorker.cs",
+              "ViewState": "AgIAADEEAAAAAAAAAAAWwDsEAAAEAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:35:03.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WorkspaceState.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\WorkspaceState.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Models\\WorkspaceState.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Models\\WorkspaceState.cs",
+              "RelativeToolTip": "SputterNewApp\\Models\\WorkspaceState.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T11:14:59.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RangeBar.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Controls\\RangeBar.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\Controls\\RangeBar.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\Controls\\RangeBar.cs",
+              "RelativeToolTip": "SputterNewApp\\Controls\\RangeBar.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T07:41:41.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SputterNewApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterNewApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "SputterNewApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-07T08:22:01.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ConnectionSettings.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\ConnectionSettings.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Models\\ConnectionSettings.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\ConnectionSettings.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Models\\ConnectionSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:05:55.11Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LogEvent.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogEvent.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\LogEvent.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\LogEvent.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\LogEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:23:43.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IModbusClientService.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\IModbusClientService.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\IModbusClientService.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\IModbusClientService.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\IModbusClientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:19:53.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "STM2Client.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\STM2Client.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\STM2Client.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\STM2Client.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\STM2Client.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:20:05.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UiTaskScheduler.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UiTaskScheduler.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\UiTaskScheduler.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UiTaskScheduler.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\UiTaskScheduler.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:20:07.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserStorage.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UserStorage.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\UserStorage.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\UserStorage.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\UserStorage.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:17:14.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DeviceToggleSupervisor.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Services\\DeviceToggleSupervisor.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:19:34.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RegisterMap.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Registers\\RegisterMap.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Registers\\RegisterMap.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Registers\\RegisterMap.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Registers\\RegisterMap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:23:36.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProcessEditForm.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\ProcessEditForm.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Forms\\ProcessEditForm.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\ProcessEditForm.cs",
+              "RelativeToolTip": "SputterControlApp\\Forms\\ProcessEditForm.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:22:56.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Forms\\MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Forms\\MainForm.Designer.cs",
+              "RelativeToolTip": "SputterControlApp\\Forms\\MainForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:21:18.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Models.cs",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\Models.cs",
+              "RelativeDocumentMoniker": "SputterControlApp\\Core\\Models\\Models.cs",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\Core\\Models\\Models.cs",
+              "RelativeToolTip": "SputterControlApp\\Core\\Models\\Models.cs",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-06T10:06:03.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "SputterControlApp_Modbus_Adres_Listesi.csv",
+              "DocumentMoniker": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv",
+              "RelativeDocumentMoniker": "SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv",
+              "ToolTip": "C:\\Users\\onure\\OneDrive\\Desktop\\Sputter\\SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv",
+              "RelativeToolTip": "SputterControlApp\\SputterControlApp_Modbus_Adres_Listesi.csv",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002120|",
+              "WhenOpened": "2026-10-06T08:39:36.017Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

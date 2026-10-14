@@ -1,0 +1,1292 @@
+﻿[
+  {
+    "Name": "silver",
+    "Density": 10.5,
+    "ZRatio": 0.529
+  },
+  {
+    "Name": "silver bromide",
+    "Density": 6.47,
+    "ZRatio": 1.18
+  },
+  {
+    "Name": "silver chloride",
+    "Density": 5.56,
+    "ZRatio": 1.32
+  },
+  {
+    "Name": "aluminum",
+    "Density": 2.7,
+    "ZRatio": 1.08
+  },
+  {
+    "Name": "aluminum oxide",
+    "Density": 3.97,
+    "ZRatio": 0.336
+  },
+  {
+    "Name": "aluminum carbide",
+    "Density": 2.36,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "aluminum fluoride",
+    "Density": 3.07,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "aluminum nitride",
+    "Density": 3.26,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "aluminum antimonide",
+    "Density": 4.36,
+    "ZRatio": 0.743
+  },
+  {
+    "Name": "arsenic",
+    "Density": 5.73,
+    "ZRatio": 0.966
+  },
+  {
+    "Name": "arsenic selenide",
+    "Density": 4.75,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gold",
+    "Density": 19.3,
+    "ZRatio": 0.381
+  },
+  {
+    "Name": "boron",
+    "Density": 2.37,
+    "ZRatio": 0.389
+  },
+  {
+    "Name": "boron oxide",
+    "Density": 1.82,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "boron carbide",
+    "Density": 2.37,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "boron nitride",
+    "Density": 1.86,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "barium",
+    "Density": 3.5,
+    "ZRatio": 2.1
+  },
+  {
+    "Name": "barium fluoride",
+    "Density": 4.886,
+    "ZRatio": 0.793
+  },
+  {
+    "Name": "barium nitrate",
+    "Density": 3.244,
+    "ZRatio": 1.261
+  },
+  {
+    "Name": "barium oxide",
+    "Density": 5.72,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "barium titanate (tetr)",
+    "Density": 5.999,
+    "ZRatio": 0.464
+  },
+  {
+    "Name": "barium titanate (cubic)",
+    "Density": 6.035,
+    "ZRatio": 0.412
+  },
+  {
+    "Name": "beryllium",
+    "Density": 1.85,
+    "ZRatio": 0.543
+  },
+  {
+    "Name": "beryllium fluoride",
+    "Density": 1.99,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "beryllium oxide",
+    "Density": 3.01,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "bismuth",
+    "Density": 9.8,
+    "ZRatio": 0.79
+  },
+  {
+    "Name": "bismuth oxide",
+    "Density": 8.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "bismuth trisulfide",
+    "Density": 7.39,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "bismuth selenide",
+    "Density": 6.82,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "bismuth telluride",
+    "Density": 7.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "bismuth fluoride",
+    "Density": 5.32,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "carbon (graphite)",
+    "Density": 2.25,
+    "ZRatio": 3.26
+  },
+  {
+    "Name": "carbon (diamond)",
+    "Density": 3.52,
+    "ZRatio": 0.22
+  },
+  {
+    "Name": "parlyene (union carbide)",
+    "Density": 1.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "calcium",
+    "Density": 1.55,
+    "ZRatio": 2.62
+  },
+  {
+    "Name": "calcium fluoride",
+    "Density": 3.18,
+    "ZRatio": 0.775
+  },
+  {
+    "Name": "calcium oxide",
+    "Density": 3.35,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "calcium silicate (3)",
+    "Density": 2.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "calcium sulfate",
+    "Density": 2.962,
+    "ZRatio": 0.955
+  },
+  {
+    "Name": "calcium titanate",
+    "Density": 4.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "calcium tungstate",
+    "Density": 6.06,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cadmium",
+    "Density": 8.64,
+    "ZRatio": 0.682
+  },
+  {
+    "Name": "cadmium fluoride",
+    "Density": 6.64,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cadmium oxide",
+    "Density": 8.15,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cadmium sulfide",
+    "Density": 4.83,
+    "ZRatio": 1.02
+  },
+  {
+    "Name": "cadmium selenide",
+    "Density": 5.81,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cadmium telluride",
+    "Density": 6.2,
+    "ZRatio": 0.98
+  },
+  {
+    "Name": "cerium",
+    "Density": 6.78,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cerium (III) fluoride",
+    "Density": 6.16,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cerium (IV) dioxide",
+    "Density": 7.13,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cobalt",
+    "Density": 8.9,
+    "ZRatio": 0.343
+  },
+  {
+    "Name": "cobalt oxide",
+    "Density": 6.44,
+    "ZRatio": 0.412
+  },
+  {
+    "Name": "chromium",
+    "Density": 7.2,
+    "ZRatio": 0.305
+  },
+  {
+    "Name": "chromium (III) oxide",
+    "Density": 5.21,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "chromium carbide",
+    "Density": 6.68,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "chromium boride",
+    "Density": 6.17,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cesium",
+    "Density": 1.87,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "cesium sulfate",
+    "Density": 4.243,
+    "ZRatio": 1.212
+  },
+  {
+    "Name": "cesium bromide",
+    "Density": 4.456,
+    "ZRatio": 1.41
+  },
+  {
+    "Name": "cesium chloride",
+    "Density": 3.988,
+    "ZRatio": 1.399
+  },
+  {
+    "Name": "cesium iodide",
+    "Density": 4.516,
+    "ZRatio": 1.542
+  },
+  {
+    "Name": "copper",
+    "Density": 8.93,
+    "ZRatio": 0.437
+  },
+  {
+    "Name": "copper oxide",
+    "Density": 6.0,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "copper (I) sulfide (alpha)",
+    "Density": 5.6,
+    "ZRatio": 0.69
+  },
+  {
+    "Name": "copper (I) sulfide (beta)",
+    "Density": 5.8,
+    "ZRatio": 0.67
+  },
+  {
+    "Name": "copper (II) sulfide",
+    "Density": 4.6,
+    "ZRatio": 0.82
+  },
+  {
+    "Name": "dysprosium",
+    "Density": 8.55,
+    "ZRatio": 0.6
+  },
+  {
+    "Name": "dysprosium oxide",
+    "Density": 7.81,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "erbium",
+    "Density": 9.05,
+    "ZRatio": 0.74
+  },
+  {
+    "Name": "erbium oxide",
+    "Density": 8.64,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "europium",
+    "Density": 5.26,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "europium fluoride",
+    "Density": 6.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "iron",
+    "Density": 7.86,
+    "ZRatio": 0.349
+  },
+  {
+    "Name": "iron oxide",
+    "Density": 5.24,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "iron oxide",
+    "Density": 5.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "iron sulfide",
+    "Density": 4.84,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gallium",
+    "Density": 5.93,
+    "ZRatio": 0.593
+  },
+  {
+    "Name": "gallium oxide (B)",
+    "Density": 5.88,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gallium arsenide",
+    "Density": 5.31,
+    "ZRatio": 1.59
+  },
+  {
+    "Name": "gallium nitride",
+    "Density": 6.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gallium phosphide",
+    "Density": 4.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gallium antimonide",
+    "Density": 5.6,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "gadolinium",
+    "Density": 7.89,
+    "ZRatio": 0.67
+  },
+  {
+    "Name": "gadolinium oxide",
+    "Density": 7.41,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "germanium",
+    "Density": 5.35,
+    "ZRatio": 0.516
+  },
+  {
+    "Name": "germanium nitride",
+    "Density": 5.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "germanium oxide",
+    "Density": 6.24,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "germanium telluride",
+    "Density": 6.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "hafnium",
+    "Density": 13.09,
+    "ZRatio": 0.36
+  },
+  {
+    "Name": "hafnium boride",
+    "Density": 10.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "hafnium carbide",
+    "Density": 12.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "hafnium nitride",
+    "Density": 13.8,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "hafnium oxide",
+    "Density": 9.68,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "hafnium silicide",
+    "Density": 7.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "mercury",
+    "Density": 13.46,
+    "ZRatio": 0.74
+  },
+  {
+    "Name": "holmium",
+    "Density": 8.8,
+    "ZRatio": 0.58
+  },
+  {
+    "Name": "holmium oxide",
+    "Density": 8.41,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium",
+    "Density": 7.3,
+    "ZRatio": 0.841
+  },
+  {
+    "Name": "indium sesquioxide",
+    "Density": 7.18,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium selenide",
+    "Density": 5.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium telluride",
+    "Density": 5.8,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium arsenide",
+    "Density": 5.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium phosphide",
+    "Density": 4.8,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "indium antimonide",
+    "Density": 5.76,
+    "ZRatio": 0.769
+  },
+  {
+    "Name": "iridium",
+    "Density": 22.4,
+    "ZRatio": 0.129
+  },
+  {
+    "Name": "potassium",
+    "Density": 0.86,
+    "ZRatio": 10.189
+  },
+  {
+    "Name": "potassium bromide",
+    "Density": 2.75,
+    "ZRatio": 1.893
+  },
+  {
+    "Name": "potassium chloride",
+    "Density": 1.98,
+    "ZRatio": 2.05
+  },
+  {
+    "Name": "potassium fluoride",
+    "Density": 2.48,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "potassium iodide",
+    "Density": 3.128,
+    "ZRatio": 2.077
+  },
+  {
+    "Name": "lanthanum",
+    "Density": 6.17,
+    "ZRatio": 0.92
+  },
+  {
+    "Name": "lanthanum oxide",
+    "Density": 6.51,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lanthanum boride",
+    "Density": 2.61,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lanthanum fluoride",
+    "Density": 5.94,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lithium",
+    "Density": 0.53,
+    "ZRatio": 5.9
+  },
+  {
+    "Name": "lithium bromide",
+    "Density": 3.47,
+    "ZRatio": 1.23
+  },
+  {
+    "Name": "lithium fluoride",
+    "Density": 2.638,
+    "ZRatio": 0.778
+  },
+  {
+    "Name": "lithium niobate",
+    "Density": 4.7,
+    "ZRatio": 0.463
+  },
+  {
+    "Name": "lithium tantalate",
+    "Density": 7.43,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lutetium",
+    "Density": 9.84,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "magnesium",
+    "Density": 1.74,
+    "ZRatio": 1.61
+  },
+  {
+    "Name": "magnesium aluminate",
+    "Density": 3.6,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "spinel",
+    "Density": 8.0,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "magnesium fluoride",
+    "Density": 3.18,
+    "ZRatio": 0.637
+  },
+  {
+    "Name": "magnesium nickel oxide",
+    "Density": 4.935,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "magnesium oxide",
+    "Density": 3.58,
+    "ZRatio": 0.411
+  },
+  {
+    "Name": "manganese",
+    "Density": 7.2,
+    "ZRatio": 0.377
+  },
+  {
+    "Name": "manganese oxide",
+    "Density": 5.39,
+    "ZRatio": 0.467
+  },
+  {
+    "Name": "manganese (II) sulfide",
+    "Density": 3.99,
+    "ZRatio": 0.94
+  },
+  {
+    "Name": "molybdenum",
+    "Density": 10.2,
+    "ZRatio": 0.257
+  },
+  {
+    "Name": "molybdenum carbide",
+    "Density": 9.18,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "molybdenum boride",
+    "Density": 7.12,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "molybdenum trioxide",
+    "Density": 4.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "molybdenum disulfide",
+    "Density": 4.8,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "sodium",
+    "Density": 0.97,
+    "ZRatio": 4.8
+  },
+  {
+    "Name": "cryolite",
+    "Density": 2.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "chiolite",
+    "Density": 2.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "sodium bromide",
+    "Density": 3.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "sodium chloride",
+    "Density": 2.17,
+    "ZRatio": 1.57
+  },
+  {
+    "Name": "sodium chlorate",
+    "Density": 2.164,
+    "ZRatio": 1.565
+  },
+  {
+    "Name": "sodium fluoride",
+    "Density": 2.558,
+    "ZRatio": 1.645
+  },
+  {
+    "Name": "sodium nitrate",
+    "Density": 2.27,
+    "ZRatio": 1.194
+  },
+  {
+    "Name": "niobium (columbium)",
+    "Density": 8.578,
+    "ZRatio": 0.492
+  },
+  {
+    "Name": "niobium trioxide",
+    "Density": 7.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "niobium (V) oxide",
+    "Density": 4.47,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "niobium boride",
+    "Density": 6.97,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "niobium carbide",
+    "Density": 7.82,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "niobium nitride",
+    "Density": 8.4,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "neodymium",
+    "Density": 7.0,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "neodymium oxide",
+    "Density": 7.24,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "neodymium fluoride",
+    "Density": 6.506,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "nickel",
+    "Density": 8.91,
+    "ZRatio": 0.331
+  },
+  {
+    "Name": "nichrome",
+    "Density": 8.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "Inconel",
+    "Density": 8.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "permalloy",
+    "Density": 8.7,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "supermalloy",
+    "Density": 8.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "nickel oxide",
+    "Density": 7.45,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "phosphorus nitride",
+    "Density": 2.51,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lead",
+    "Density": 11.3,
+    "ZRatio": 1.13
+  },
+  {
+    "Name": "lead chloride",
+    "Density": 5.85,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lead fluoride",
+    "Density": 8.24,
+    "ZRatio": 0.661
+  },
+  {
+    "Name": "lead oxide",
+    "Density": 9.53,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lead sulfide",
+    "Density": 7.5,
+    "ZRatio": 0.566
+  },
+  {
+    "Name": "lead selenide",
+    "Density": 8.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lead stannate",
+    "Density": 8.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "lead telluride",
+    "Density": 8.16,
+    "ZRatio": 0.651
+  },
+  {
+    "Name": "lead zirconate titanate",
+    "Density": 7.25,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "palladium",
+    "Density": 12.038,
+    "ZRatio": 0.357
+  },
+  {
+    "Name": "palladium oxide",
+    "Density": 8.31,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "polonium",
+    "Density": 9.4,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "praseodymium",
+    "Density": 6.78,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "praseodymium oxide",
+    "Density": 6.88,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "platinum",
+    "Density": 21.4,
+    "ZRatio": 0.245
+  },
+  {
+    "Name": "platinum oxide",
+    "Density": 10.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "radium",
+    "Density": 5.0,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "rubidium",
+    "Density": 1.53,
+    "ZRatio": 2.54
+  },
+  {
+    "Name": "rubidium iodide",
+    "Density": 3.55,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "rhenium",
+    "Density": 21.04,
+    "ZRatio": 0.15
+  },
+  {
+    "Name": "rhodium",
+    "Density": 12.41,
+    "ZRatio": 0.21
+  },
+  {
+    "Name": "ruthenium",
+    "Density": 12.362,
+    "ZRatio": 0.182
+  },
+  {
+    "Name": "sulfur",
+    "Density": 2.07,
+    "ZRatio": 2.29
+  },
+  {
+    "Name": "antimony",
+    "Density": 6.62,
+    "ZRatio": 0.768
+  },
+  {
+    "Name": "antimony trioxide",
+    "Density": 5.2,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "antimony trisulfide",
+    "Density": 4.64,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "scandium",
+    "Density": 3.0,
+    "ZRatio": 0.91
+  },
+  {
+    "Name": "scandium oxide",
+    "Density": 3.86,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "selenium",
+    "Density": 4.81,
+    "ZRatio": 0.864
+  },
+  {
+    "Name": "silicon",
+    "Density": 2.32,
+    "ZRatio": 0.712
+  },
+  {
+    "Name": "silicon nitride",
+    "Density": 3.44,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "silicon carbide",
+    "Density": 3.22,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "silicon (II) oxide",
+    "Density": 2.13,
+    "ZRatio": 0.87
+  },
+  {
+    "Name": "silicon dioxide",
+    "Density": 2.648,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "samarium",
+    "Density": 7.54,
+    "ZRatio": 0.89
+  },
+  {
+    "Name": "samarium oxide",
+    "Density": 7.43,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tin",
+    "Density": 7.3,
+    "ZRatio": 0.724
+  },
+  {
+    "Name": "tin oxide",
+    "Density": 6.95,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tin sulfide",
+    "Density": 5.08,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tin selenide",
+    "Density": 6.18,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tin telluride",
+    "Density": 6.44,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "strontium",
+    "Density": 2.6,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "strontium fluoride",
+    "Density": 4.277,
+    "ZRatio": 0.727
+  },
+  {
+    "Name": "strontium oxide",
+    "Density": 4.99,
+    "ZRatio": 0.517
+  },
+  {
+    "Name": "tantalum",
+    "Density": 16.6,
+    "ZRatio": 0.262
+  },
+  {
+    "Name": "tantalum (V) oxide",
+    "Density": 8.2,
+    "ZRatio": 0.3
+  },
+  {
+    "Name": "tantalum boride",
+    "Density": 11.15,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tantalum carbide",
+    "Density": 13.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tantalum nitride",
+    "Density": 16.3,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "terbium",
+    "Density": 8.27,
+    "ZRatio": 0.66
+  },
+  {
+    "Name": "technetium",
+    "Density": 11.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tellurium",
+    "Density": 6.25,
+    "ZRatio": 0.9
+  },
+  {
+    "Name": "tellurium oxide",
+    "Density": 5.99,
+    "ZRatio": 0.862
+  },
+  {
+    "Name": "thorium",
+    "Density": 11.694,
+    "ZRatio": 0.484
+  },
+  {
+    "Name": "thorium (IV) fluoride",
+    "Density": 6.32,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "thorium dioxide",
+    "Density": 9.86,
+    "ZRatio": 0.284
+  },
+  {
+    "Name": "thorium oxyfluoride",
+    "Density": 9.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium",
+    "Density": 4.5,
+    "ZRatio": 0.628
+  },
+  {
+    "Name": "titanium sesquioxide",
+    "Density": 4.6,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium boride",
+    "Density": 4.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium carbide",
+    "Density": 4.93,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium nitride",
+    "Density": 5.43,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium oxide",
+    "Density": 4.9,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "titanium (IV) oxide",
+    "Density": 4.26,
+    "ZRatio": 0.4
+  },
+  {
+    "Name": "thallium",
+    "Density": 11.85,
+    "ZRatio": 1.55
+  },
+  {
+    "Name": "thallium bromide",
+    "Density": 7.56,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "thallium chloride",
+    "Density": 7.0,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "thallium iodide (B)",
+    "Density": 7.09,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "uranium",
+    "Density": 19.05,
+    "ZRatio": 0.238
+  },
+  {
+    "Name": "tri uranium octoxide",
+    "Density": 8.3,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "uranium oxide",
+    "Density": 10.969,
+    "ZRatio": 0.348
+  },
+  {
+    "Name": "uranium dioxide",
+    "Density": 10.97,
+    "ZRatio": 0.286
+  },
+  {
+    "Name": "vanadium",
+    "Density": 5.96,
+    "ZRatio": 0.53
+  },
+  {
+    "Name": "vanadium pentoxide",
+    "Density": 3.36,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "vanadium boride",
+    "Density": 5.1,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "vanadium carbide",
+    "Density": 5.77,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "vanadium nitride",
+    "Density": 6.13,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "vanadium dioxide",
+    "Density": 4.34,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tungsten",
+    "Density": 19.3,
+    "ZRatio": 0.163
+  },
+  {
+    "Name": "tungsten boride",
+    "Density": 10.77,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tungsten carbide",
+    "Density": 15.6,
+    "ZRatio": 0.151
+  },
+  {
+    "Name": "tungsten trioxide",
+    "Density": 7.16,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tungsten disulfide",
+    "Density": 7.5,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "tungsten silicide",
+    "Density": 9.4,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "yttrium",
+    "Density": 4.34,
+    "ZRatio": 0.835
+  },
+  {
+    "Name": "yttrium oxide",
+    "Density": 5.01,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "ytterbium",
+    "Density": 6.98,
+    "ZRatio": 1.13
+  },
+  {
+    "Name": "ytterbium oxide",
+    "Density": 9.17,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "zinc",
+    "Density": 7.04,
+    "ZRatio": 0.514
+  },
+  {
+    "Name": "zinc antimonide",
+    "Density": 6.3,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "zinc fluoride",
+    "Density": 4.95,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "zinc oxide",
+    "Density": 5.61,
+    "ZRatio": 0.556
+  },
+  {
+    "Name": "zinc sulfide",
+    "Density": 4.09,
+    "ZRatio": 0.775
+  },
+  {
+    "Name": "zinc selenide",
+    "Density": 5.26,
+    "ZRatio": 0.722
+  },
+  {
+    "Name": "zinc telluride",
+    "Density": 6.34,
+    "ZRatio": 0.77
+  },
+  {
+    "Name": "zirconium",
+    "Density": 6.49,
+    "ZRatio": 0.6
+  },
+  {
+    "Name": "zirconium boride",
+    "Density": 6.08,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "zirconium carbide",
+    "Density": 6.73,
+    "ZRatio": 0.264
+  },
+  {
+    "Name": "zirconium nitride",
+    "Density": 7.09,
+    "ZRatio": 1.0
+  },
+  {
+    "Name": "zirconium oxide",
+    "Density": 5.6,
+    "ZRatio": 1.0
+  }
+]

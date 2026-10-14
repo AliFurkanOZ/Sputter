@@ -1,0 +1,179 @@
+﻿Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu,Register Haritası ve Kullanım Durumu
+"RegisterMap.cs içindeki tüm tanımlar. 'Tanımlı, kullanılmıyor' satırları derlenen kaynaklarda sabit erişim bulunmayan kayıtları gösterir; Manual Read ekranındaki kullanıcı seçimi dinamik olduğu için bu sınıflamaya dahil değildir.",,,,,,,,,
+,,,,,,,,,
+D Aralığı,Başlangıç,Holding (4xxxx),Register Adı,Veri Tipi,Word,Durum,Erişim,Kullanılan Dosyalar,Tanım / Not
+D0,0,40001,DC_Control_Command,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.DeviceControl.cs; Forms/MainForm.QcmSensors.cs; Forms/MainForm.SnapshotRead.cs,"0=Stop, 1=Start | Core/Registers/RegisterMap.cs:12"
+D1,1,40002,DC_Step1_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:13
+D2,2,40003,DC_Step1_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:14
+D3,3,40004,DC_Step1_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:15
+D4,4,40005,DC_Step2_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:16
+D5,5,40006,DC_Step2_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:17
+D6,6,40007,DC_Step2_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:18
+D7,7,40008,DC_OffRamp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:19
+D8,8,40009,DC_Set_Voltage,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:20
+D9,9,40010,DC_Set_Current,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:21
+D10–D11,10,40011–40012,D1ActualFlow,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:23
+D12–D13,12,40013–40014,D1ReadSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:24
+D14–D15,14,40015–40016,D1WriteSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:25
+D16–D17,16,40017–40018,D1ReadFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:26
+D18–D19,18,40019–40020,D1WriteFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:27
+D20,20,40021,D1ReadGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,1 reg Int16 | Core/Registers/RegisterMap.cs:28
+D21,21,40022,D1WriteGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,1 reg Int16 | Core/Registers/RegisterMap.cs:29
+D22,22,40023,D1ReadValvePosition,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,"1 reg Int16; // 2=Close, 1=Open | Core/Registers/RegisterMap.cs:30"
+D23,23,40024,D1WriteValvePosition,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,"1 reg Int16; // 2=Close, 1=Open | Core/Registers/RegisterMap.cs:31"
+D24,24,40025,D1ReadFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,1 reg Int16 | Core/Registers/RegisterMap.cs:32
+D25,25,40026,D1WriteFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,1 reg Int16 | Core/Registers/RegisterMap.cs:33
+D26–D27,26,40027–40028,D2ActualFlow,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:34
+D28–D29,28,40029–40030,D2ReadSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:35
+D30–D31,30,40031–40032,D2WriteSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:36
+D32–D33,32,40033–40034,D2ReadFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:37
+D34–D35,34,40035–40036,D2WriteFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:38
+D36,36,40037,D2ReadGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:39
+D37,37,40038,D2WriteGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:40
+D38,38,40039,D2ReadValvePosition,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:41
+D39,39,40040,D2WriteValvePosition,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:42
+D40,40,40041,D2ReadFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:43
+D41,41,40042,D2WriteFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:44
+D42–D43,42,40043–40044,D3ActualFlow,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:45
+D44–D45,44,40045–40046,D3ReadSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:46
+D46–D47,46,40047–40048,D3WriteSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:47
+D48–D49,48,40049–40050,D3ReadFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:48
+D50–D51,50,40051–40052,D3WriteFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:49
+D52,52,40053,D3ReadGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:50
+D53,53,40054,D3WriteGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:51
+D54,54,40055,D3ReadValvePosition,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:52
+D55,55,40056,D3WriteValvePosition,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:53
+D56,56,40057,D3ReadFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:54
+D57,57,40058,D3WriteFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:55
+D58–D59,58,40059–40060,D4ActualFlow,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:56
+D60–D61,60,40061–40062,D4ReadSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:57
+D62–D63,62,40063–40064,D4WriteSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:58
+D64–D65,64,40065–40066,D4ReadFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:59
+D66–D67,66,40067–40068,D4WriteFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:60
+D68,68,40069,D4ReadGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:61
+D69,69,40070,D4WriteGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:62
+D70,70,40071,D4ReadValvePosition,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:63
+D71,71,40072,D4WriteValvePosition,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:64
+D72,72,40073,D4ReadFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:65
+D73,73,40074,D4WriteFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:66
+D74–D75,74,40075–40076,D5ActualFlow,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:67
+D76–D77,76,40077–40078,D5ReadSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:68
+D78–D79,78,40079–40080,D5WriteSetPoint,Float32 (CDAB),2,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:69
+D80–D81,80,40081–40082,D5ReadFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:70
+D82–D83,82,40083–40084,D5WriteFullScale,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:71
+D84,84,40085,D5ReadGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:72
+D85,85,40086,D5WriteGasIndex,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:73
+D86,86,40087,D5ReadValvePosition,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:74
+D87,87,40088,D5WriteValvePosition,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:75
+D88,88,40089,D5ReadFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:76
+D89,89,40090,D5WriteFlowUnit,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:77
+D100,100,40101,Rotation_Motor_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:82
+D101,101,40102,Rezistans_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:83
+D102,102,40103,RF1_Power,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:84
+D103,103,40104,RF2_Power,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:85
+D104,104,40105,DC_Power,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:86
+D105,105,40106,MatchBox_Power,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:87
+D106,106,40107,Scroll_Vakum_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:88
+D107,107,40108,Turbo_EVP_Vakum_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:89
+D108,108,40109,Chiller_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:90
+D109,109,40110,Gatevalve_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:91
+D110,110,40111,Chamber_Valf_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:92
+D111,111,40112,Soft_Turbo_Valf_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:93
+D112,112,40113,RF1_Shutter_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:94
+D113,113,40114,DC_Shutter_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:95
+D114,114,40115,RF2_Shutter_Start,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,— | Core/Registers/RegisterMap.cs:96
+D115,115,40116,Slot_Valf4_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:98
+D116,116,40117,Slot_Valf5_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:99
+D117,117,40118,Yedek1_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:100
+D118,118,40119,Yedek2_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:101
+D119,119,40120,Yedek3_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:102
+D120,120,40121,Yedek4_Start,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:103
+D123–D124,123,40124–40125,TorDegerAux,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:106
+D125–D126,125,40126–40127,AnalogVoltaj1,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:107
+D127–D128,127,40128–40129,TorDeger,Float32 (CDAB),2,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:108
+D130,130,40131,RF1_Control_Command,Int16,1,Kullanılıyor,Yazma,Forms/MainForm.DeviceControl.cs; Forms/MainForm.QcmSensors.cs,"0=Stop, 1=Start | Core/Registers/RegisterMap.cs:113"
+D131,131,40132,RF1_Step1_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:114
+D132,132,40133,RF1_Step1_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:115
+D133,133,40134,RF1_Step1_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:116
+D134,134,40135,RF1_Step2_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:117
+D135,135,40136,RF1_Step2_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:118
+D136,136,40137,RF1_Step2_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:119
+D137,137,40138,RF1_OffRamp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:120
+D138,138,40139,RF1_FwP,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:121
+D139,139,40140,RF1_RefP,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:122
+D140,140,40141,RF1_Status,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.DeviceControl.cs; Forms/MainForm.RF1Sequence.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:123
+D141,141,40142,RF1_ReadW,Int16,1,"Tanımlı, kullanılmıyor",—,—,Int16 | Core/Registers/RegisterMap.cs:124
+D150,150,40151,GateValve_Position,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:128
+D151,151,40152,RotationMotor_Rpm,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:129
+D152,152,40153,Turbo_Frequency,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs,Int16 | Core/Registers/RegisterMap.cs:130
+D153,153,40154,GateValve_Speed,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:131
+D154,154,40155,GateValve_State,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.GateValveState.cs,"Int16; 0=Stop, 4998=Opening, 4999=Closing | Core/Registers/RegisterMap.cs:132"
+D160,160,40161,DC_Read_VSet,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:137
+D161,161,40162,DC_Read_CSet,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:138
+D162,162,40163,DC_Read_PSet,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:139
+D163,163,40164,DC_Read_Voltage,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:140
+D164,164,40165,DC_Read_Current,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:141
+D165,165,40166,DC_Read_Power,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:142
+D166,166,40167,DC_Read_WorkMode,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:143
+D170,170,40171,DC_Read_HW,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:144
+D171,171,40172,DC_Interlock,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:145
+D172,172,40173,DC_Read_Out,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:146
+D184,184,40185,DC_Voltage_Ramp_Read,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:147
+D185,185,40186,DC_Current_Ramp_Read,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:148
+D186,186,40187,DC_Power_Ramp_Read,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:149
+D190,190,40191,DC_ReadBeeper,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:150
+D192,192,40193,DC_Read_Outp_Mode,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:151
+D193,193,40194,DC_Read_Pulse_Frq,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:152
+D210,210,40211,DC_Volt_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:153
+D211,211,40212,DC_Current_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:154
+D212,212,40213,DC_Power_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:155
+D213,213,40214,DC_Set_Work_Mode,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:156
+D214,214,40215,DC_VoltageLimit_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:157
+D215,215,40216,DC_Current_Limit_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:158
+D216,216,40217,DC_Power_Limit_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:159
+D217,217,40218,DC_Ramp_ActiveSet1,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:160
+D218,218,40219,DC_Voltage_Ramp_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:161
+D219,219,40220,DC_Current_Ramp_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:162
+D220,220,40221,DC_Interface,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:163
+D221,221,40222,DC_Power_Ramp_Set,Int16,1,"Tanımlı, kullanılmıyor",—,—,— | Core/Registers/RegisterMap.cs:164
+D222,222,40223,DC_Set_Out,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.DCSequence.cs; Forms/MainForm.DeviceControl.cs; Forms/MainForm.SnapshotRead.cs,— | Core/Registers/RegisterMap.cs:165
+D230–D231,230,40231–40232,Thickness1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:167
+D232–D233,232,40233–40234,Rate1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:168
+D234–D235,234,40235–40236,Life1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:169
+D236–D237,236,40237–40238,SerialNumber1,Int32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,"2 regs,int32; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:170"
+D238–D239,238,40239–40240,Thickness2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:171
+D240–D241,240,40241–40242,Rate2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:172
+D242–D243,242,40243–40244,Life2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:173
+D244–D245,244,40245–40246,SerialNumber2,Int32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,"2 regs,int32; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:174"
+D246–D247,246,40247–40248,Thickness3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:175
+D248–D249,248,40249–40250,Rate3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:176
+D250–D251,250,40251–40252,Life3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:177
+D252–D253,252,40253–40254,SerialNumber3,Int32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,"2 regs,int32; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:178"
+D254–D255,254,40255–40256,Z_Ratio1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:180
+D256–D257,256,40257–40258,Density1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:181
+D258–D259,258,40259–40260,Tooling1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:182
+D260–D261,260,40261–40262,ZeroThickness1,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:183
+D262–D263,262,40263–40264,Z_Ratio2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:184
+D264–D265,264,40265–40266,Density2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:185
+D266–D267,266,40267–40268,Tooling2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:186
+D268–D269,268,40269–40270,ZeroThickness2,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:187
+D270–D271,270,40271–40272,Z_Ratio3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:188
+D272–D273,272,40273–40274,Density3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:189
+D274–D275,274,40275–40276,Tooling3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:190
+D276–D277,276,40277–40278,ZeroThickness3,Float32 (CDAB),2,"Tanımlı, kullanılmıyor",—,—,2 regs; word order CDAB; big-endian bytes | Core/Registers/RegisterMap.cs:191
+D280,280,40281,RF2_Control_Command,Int16,1,Kullanılıyor,Yazma,Forms/MainForm.DeviceControl.cs; Forms/MainForm.QcmSensors.cs,"0=Stop, 1=Start | Core/Registers/RegisterMap.cs:194"
+D281,281,40282,RF2_Step1_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:195
+D282,282,40283,RF2_Step1_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:196
+D283,283,40284,RF2_Step1_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:197
+D284,284,40285,RF2_Step2_SetW,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:198
+D285,285,40286,RF2_Step2_Ramp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:199
+D286,286,40287,RF2_Step2_Dwell,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:200
+D287,287,40288,RF2_OffRamp,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:201
+D288,288,40289,RF2_FwP,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:202
+D289,289,40290,RF2_RefP,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:203
+D290,290,40291,RF2_Status,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.DeviceControl.cs; Forms/MainForm.SnapshotRead.cs,Int16 | Core/Registers/RegisterMap.cs:204
+D291,291,40292,RF2_ReadW,Int16,1,"Tanımlı, kullanılmıyor",—,—,Int16 | Core/Registers/RegisterMap.cs:205
+D292,292,40293,Ordel_SetValue,Int16,1,Kullanılıyor,Okuma + Yazma,Forms/MainForm.SnapshotRead.cs; Forms/MainForm.Wiring.cs,Int16 | Core/Registers/RegisterMap.cs:209
+D294,294,40295,Ordel_Instant_Value,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.Polling.cs,Int16 | Core/Registers/RegisterMap.cs:210
+D295,295,40296,Ordel_Value,Int16,1,"Tanımlı, kullanılmıyor",—,—,Int16 | Core/Registers/RegisterMap.cs:211
+D350,350,40351,EmergencyStop,Int16,1,Kullanılıyor,Okuma,Forms/MainForm.EmergencyStop.cs,"0=Not pressed, 1=Pressed | Core/Registers/RegisterMap.cs:213"

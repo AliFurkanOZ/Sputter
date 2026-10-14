@@ -1,0 +1,150 @@
+﻿SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri,SputterControlApp – Kullanılan Modbus Adresleri
+Kaynak: derlenen C# dosyaları ve Core/Registers/RegisterMap.cs. D adresleri sıfır tabanlıdır; 4xxxx gösterimi 40001 + adres olarak verilmiştir.,,,,,,,,,
+,,,,,,,,,
+Kullanılan fiziksel adres,143,Tanımlı register,175,Kullanılan tanım,115,Tanımsız blok adresi,0,,
+En düşük adres,0,En yüksek adres,350,Okunan,141,Yazılan,58,,
+,,,,,,,,,
+D Adresi,Decimal,Holding (4xxxx),Register Adı,Word Rolü,Veri Tipi,Erişim,Kaynak Sayısı,Kod Konumları,RegisterMap Notu
+D0,0,40001,DC_Control_Command,Tek word,Int16,Okuma + Yazma,5,Forms/MainForm.DeviceControl.cs:36; Forms/MainForm.QcmSensors.cs:1801; Forms/MainForm.QcmSensors.cs:1827; Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.SnapshotRead.cs:347,"0=Stop, 1=Start"
+D1,1,40002,DC_Step1_SetW,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:610; Forms/MainForm.Wiring.cs:611,Int16
+D2,2,40003,DC_Step1_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:619; Forms/MainForm.Wiring.cs:620,Int16
+D3,3,40004,DC_Step1_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:628; Forms/MainForm.Wiring.cs:629,Int16
+D4,4,40005,DC_Step2_SetW,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:641; Forms/MainForm.Wiring.cs:642,Int16
+D5,5,40006,DC_Step2_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:650; Forms/MainForm.Wiring.cs:651,Int16
+D6,6,40007,DC_Step2_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:659; Forms/MainForm.Wiring.cs:660,Int16
+D7,7,40008,DC_OffRamp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:670; Forms/MainForm.Wiring.cs:671,Int16
+D8,8,40009,DC_Set_Voltage,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:683; Forms/MainForm.Wiring.cs:684,Int16
+D9,9,40010,DC_Set_Current,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:346 blok (10); Forms/MainForm.Wiring.cs:692; Forms/MainForm.Wiring.cs:693,Int16
+D10,10,40011,D1ActualFlow,1/2. word,Float32 (CDAB),Okuma,5,Forms/MainForm.Polling.cs:19; Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:45; Forms/MainForm.SnapshotRead.cs:185; Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D11,11,40012,D1ActualFlow,2/2. word,Float32 (CDAB),Okuma,5,Forms/MainForm.Polling.cs:19; Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:45; Forms/MainForm.SnapshotRead.cs:185; Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D12,12,40013,D1ReadSetPoint,1/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:207; Forms/MainForm.Wiring.cs:706,2 regs; word order CDAB; big-endian bytes
+D13,13,40014,D1ReadSetPoint,2/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:207; Forms/MainForm.Wiring.cs:706,2 regs; word order CDAB; big-endian bytes
+D14,14,40015,D1WriteSetPoint,1/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:706,2 regs; word order CDAB; big-endian bytes
+D15,15,40016,D1WriteSetPoint,2/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:706,2 regs; word order CDAB; big-endian bytes
+D16,16,40017,D1ReadFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D17,17,40018,D1ReadFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D18,18,40019,D1WriteFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D19,19,40020,D1WriteFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),2 regs; word order CDAB; big-endian bytes
+D20,20,40021,D1ReadGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),1 reg Int16
+D21,21,40022,D1WriteGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),1 reg Int16
+D22,22,40023,D1ReadValvePosition,Tek word,Int16,Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:220; Forms/MainForm.Wiring.cs:45,"1 reg Int16; // 2=Close, 1=Open"
+D23,23,40024,D1WriteValvePosition,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:44,"1 reg Int16; // 2=Close, 1=Open"
+D24,24,40025,D1ReadFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),1 reg Int16
+D25,25,40026,D1WriteFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),1 reg Int16
+D26,26,40027,D2ActualFlow,1/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:46; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D27,27,40028,D2ActualFlow,2/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:46; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D28,28,40029,D2ReadSetPoint,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D29,29,40030,D2ReadSetPoint,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D30,30,40031,D2WriteSetPoint,1/2. word,Float32 (CDAB),Okuma + Yazma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:208; Forms/MainForm.Wiring.cs:707,
+D31,31,40032,D2WriteSetPoint,2/2. word,Float32 (CDAB),Okuma + Yazma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:208; Forms/MainForm.Wiring.cs:707,
+D32,32,40033,D2ReadFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D33,33,40034,D2ReadFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D34,34,40035,D2WriteFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D35,35,40036,D2WriteFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D36,36,40037,D2ReadGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D37,37,40038,D2WriteGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D38,38,40039,D2ReadValvePosition,Tek word,Int16,Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:221,
+D39,39,40040,D2WriteValvePosition,Tek word,Int16,Okuma + Yazma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:54; Forms/MainForm.Wiring.cs:55,
+D40,40,40041,D2ReadFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D41,41,40042,D2WriteFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D42,42,40043,D3ActualFlow,1/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:47; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D43,43,40044,D3ActualFlow,2/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:47; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D44,44,40045,D3ReadSetPoint,1/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:209; Forms/MainForm.Wiring.cs:708,
+D45,45,40046,D3ReadSetPoint,2/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:209; Forms/MainForm.Wiring.cs:708,
+D46,46,40047,D3WriteSetPoint,1/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:708,
+D47,47,40048,D3WriteSetPoint,2/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:708,
+D48,48,40049,D3ReadFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D49,49,40050,D3ReadFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D50,50,40051,D3WriteFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D51,51,40052,D3WriteFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D52,52,40053,D3ReadGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D53,53,40054,D3WriteGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D54,54,40055,D3ReadValvePosition,Tek word,Int16,Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:222; Forms/MainForm.Wiring.cs:65,
+D55,55,40056,D3WriteValvePosition,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:64,
+D56,56,40057,D3ReadFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D57,57,40058,D3WriteFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D58,58,40059,D4ActualFlow,1/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:48; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D59,59,40060,D4ActualFlow,2/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:48; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D60,60,40061,D4ReadSetPoint,1/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:210; Forms/MainForm.Wiring.cs:709,
+D61,61,40062,D4ReadSetPoint,2/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:210; Forms/MainForm.Wiring.cs:709,
+D62,62,40063,D4WriteSetPoint,1/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:709,
+D63,63,40064,D4WriteSetPoint,2/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:709,
+D64,64,40065,D4ReadFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D65,65,40066,D4ReadFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D66,66,40067,D4WriteFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D67,67,40068,D4WriteFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D68,68,40069,D4ReadGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D69,69,40070,D4WriteGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D70,70,40071,D4ReadValvePosition,Tek word,Int16,Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:223; Forms/MainForm.Wiring.cs:75,
+D71,71,40072,D4WriteValvePosition,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:74,
+D72,72,40073,D4ReadFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D73,73,40074,D4WriteFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D74,74,40075,D5ActualFlow,1/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:49; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D75,75,40076,D5ActualFlow,2/2. word,Float32 (CDAB),Okuma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.Polling.cs:49; Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D76,76,40077,D5ReadSetPoint,1/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:211; Forms/MainForm.Wiring.cs:710,
+D77,77,40078,D5ReadSetPoint,2/2. word,Float32 (CDAB),Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:211; Forms/MainForm.Wiring.cs:710,
+D78,78,40079,D5WriteSetPoint,1/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:710,
+D79,79,40080,D5WriteSetPoint,2/2. word,Float32 (CDAB),Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:710,
+D80,80,40081,D5ReadFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D81,81,40082,D5ReadFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D82,82,40083,D5WriteFullScale,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D83,83,40084,D5WriteFullScale,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D84,84,40085,D5ReadGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D85,85,40086,D5WriteGasIndex,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D86,86,40087,D5ReadValvePosition,Tek word,Int16,Okuma,4,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.SnapshotRead.cs:224; Forms/MainForm.Wiring.cs:85,
+D87,87,40088,D5WriteValvePosition,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80); Forms/MainForm.Wiring.cs:84,
+D88,88,40089,D5ReadFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D89,89,40090,D5WriteFlowUnit,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:19 blok (80); Forms/MainForm.SnapshotRead.cs:185 blok (80),
+D100,100,40101,Rotation_Motor_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:99 ham adres,
+D101,101,40102,Rezistans_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:108 ham adres,
+D102,102,40103,RF1_Power,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:109 ham adres,
+D103,103,40104,RF2_Power,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:110 ham adres,
+D104,104,40105,DC_Power,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:111 ham adres,
+D105,105,40106,MatchBox_Power,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:112 ham adres,
+D106,106,40107,Scroll_Vakum_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:113 ham adres,
+D107,107,40108,Turbo_EVP_Vakum_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:114 ham adres,
+D108,108,40109,Chiller_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:115 ham adres,
+D110,110,40111,Chamber_Valf_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:117 ham adres,
+D112,112,40113,RF1_Shutter_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:119 ham adres,
+D113,113,40114,DC_Shutter_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:120 ham adres,
+D114,114,40115,RF2_Shutter_Start,Tek word,Int16,Okuma + Yazma,1,Forms/MainForm.Wiring.cs:121 ham adres,
+D123,123,40124,TorDegerAux,1/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:112 blok (6); Forms/MainForm.Polling.cs:113,2 regs; word order CDAB; big-endian bytes
+D124,124,40125,TorDegerAux,2/2. word,Float32 (CDAB),Okuma,2,Forms/MainForm.Polling.cs:112 blok (6); Forms/MainForm.Polling.cs:113,2 regs; word order CDAB; big-endian bytes
+D125,125,40126,AnalogVoltaj1,1/2. word,Float32 (CDAB),Okuma,1,Forms/MainForm.Polling.cs:112 blok (6),2 regs; word order CDAB; big-endian bytes
+D126,126,40127,AnalogVoltaj1,2/2. word,Float32 (CDAB),Okuma,1,Forms/MainForm.Polling.cs:112 blok (6),2 regs; word order CDAB; big-endian bytes
+D127,127,40128,TorDeger,1/2. word,Float32 (CDAB),Okuma,1,Forms/MainForm.Polling.cs:112 blok (6),2 regs; word order CDAB; big-endian bytes
+D128,128,40129,TorDeger,2/2. word,Float32 (CDAB),Okuma,1,Forms/MainForm.Polling.cs:112 blok (6),2 regs; word order CDAB; big-endian bytes
+D130,130,40131,RF1_Control_Command,Tek word,Int16,Yazma,3,Forms/MainForm.DeviceControl.cs:30; Forms/MainForm.QcmSensors.cs:1799; Forms/MainForm.QcmSensors.cs:1825,"0=Stop, 1=Start"
+D131,131,40132,RF1_Step1_SetW,Tek word,Int16,Okuma + Yazma,4,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.SnapshotRead.cs:293; Forms/MainForm.Wiring.cs:444; Forms/MainForm.Wiring.cs:445,Int16
+D132,132,40133,RF1_Step1_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:453; Forms/MainForm.Wiring.cs:454,Int16
+D133,133,40134,RF1_Step1_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:462; Forms/MainForm.Wiring.cs:463,Int16
+D134,134,40135,RF1_Step2_SetW,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:475; Forms/MainForm.Wiring.cs:476,Int16
+D135,135,40136,RF1_Step2_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:484; Forms/MainForm.Wiring.cs:485,Int16
+D136,136,40137,RF1_Step2_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:493; Forms/MainForm.Wiring.cs:494,Int16
+D137,137,40138,RF1_OffRamp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:292 blok (10); Forms/MainForm.Wiring.cs:504; Forms/MainForm.Wiring.cs:505,Int16
+D138,138,40139,RF1_FwP,Tek word,Int16,Okuma,3,Forms/MainForm.Polling.cs:167 blok (2); Forms/MainForm.Polling.cs:168; Forms/MainForm.SnapshotRead.cs:292 blok (10),Int16
+D139,139,40140,RF1_RefP,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:167 blok (2); Forms/MainForm.SnapshotRead.cs:292 blok (10),Int16
+D140,140,40141,RF1_Status,Tek word,Int16,Okuma,4,Forms/MainForm.DeviceControl.cs:77; Forms/MainForm.RF1Sequence.cs:49; Forms/MainForm.RF1Sequence.cs:49 blok (1); Forms/MainForm.SnapshotRead.cs:292 blok (10),Int16
+D150,150,40151,GateValve_Position,Tek word,Int16,Okuma + Yazma,6,Forms/MainForm.SnapshotRead.cs:244; Forms/MainForm.SnapshotRead.cs:244 blok (1); Forms/MainForm.Wiring.cs:291; Forms/MainForm.Wiring.cs:292; Forms/MainForm.Wiring.cs:330 blok (1); Forms/MainForm.Wiring.cs:331,Int16
+D151,151,40152,RotationMotor_Rpm,Tek word,Int16,Okuma + Yazma,5,Forms/MainForm.SnapshotRead.cs:259; Forms/MainForm.SnapshotRead.cs:259 blok (1); Forms/MainForm.Wiring.cs:104; Forms/MainForm.Wiring.cs:308; Forms/MainForm.Wiring.cs:309,Int16
+D152,152,40153,Turbo_Frequency,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:147 blok (1); Forms/MainForm.Polling.cs:148,Int16
+D153,153,40154,GateValve_Speed,Tek word,Int16,Okuma + Yazma,2,Forms/MainForm.Wiring.cs:342; Forms/MainForm.Wiring.cs:344,Int16
+D154,154,40155,GateValve_State,Tek word,Int16,Okuma,2,Forms/MainForm.GateValveState.cs:25 blok (1); Forms/MainForm.GateValveState.cs:26,"Int16; 0=Stop, 4998=Opening, 4999=Closing"
+D163,163,40164,DC_Read_Voltage,Tek word,Int16,Okuma,4,Forms/MainForm.Polling.cs:230 blok (3); Forms/MainForm.Polling.cs:231; Forms/MainForm.SnapshotRead.cs:367 blok (3); Forms/MainForm.SnapshotRead.cs:368,
+D164,164,40165,DC_Read_Current,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:230 blok (3); Forms/MainForm.SnapshotRead.cs:367 blok (3),
+D165,165,40166,DC_Read_Power,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:230 blok (3); Forms/MainForm.SnapshotRead.cs:367 blok (3),
+D222,222,40223,DC_Set_Out,Tek word,Int16,Okuma,5,Forms/MainForm.DCSequence.cs:58; Forms/MainForm.DCSequence.cs:58 blok (1); Forms/MainForm.DeviceControl.cs:79; Forms/MainForm.SnapshotRead.cs:379 blok (1); Forms/MainForm.SnapshotRead.cs:380,
+D280,280,40281,RF2_Control_Command,Tek word,Int16,Yazma,3,Forms/MainForm.DeviceControl.cs:33; Forms/MainForm.QcmSensors.cs:1800; Forms/MainForm.QcmSensors.cs:1826,"0=Stop, 1=Start"
+D281,281,40282,RF2_Step1_SetW,Tek word,Int16,Okuma + Yazma,4,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.SnapshotRead.cs:320; Forms/MainForm.Wiring.cs:525; Forms/MainForm.Wiring.cs:526,Int16
+D282,282,40283,RF2_Step1_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:535; Forms/MainForm.Wiring.cs:536,Int16
+D283,283,40284,RF2_Step1_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:545; Forms/MainForm.Wiring.cs:546,Int16
+D284,284,40285,RF2_Step2_SetW,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:558; Forms/MainForm.Wiring.cs:559,Int16
+D285,285,40286,RF2_Step2_Ramp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:568; Forms/MainForm.Wiring.cs:569,Int16
+D286,286,40287,RF2_Step2_Dwell,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:578; Forms/MainForm.Wiring.cs:579,Int16
+D287,287,40288,RF2_OffRamp,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:319 blok (10); Forms/MainForm.Wiring.cs:589; Forms/MainForm.Wiring.cs:590,Int16
+D288,288,40289,RF2_FwP,Tek word,Int16,Okuma,3,Forms/MainForm.Polling.cs:198 blok (2); Forms/MainForm.Polling.cs:199; Forms/MainForm.SnapshotRead.cs:319 blok (10),Int16
+D289,289,40290,RF2_RefP,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:198 blok (2); Forms/MainForm.SnapshotRead.cs:319 blok (10),Int16
+D290,290,40291,RF2_Status,Tek word,Int16,Okuma,2,Forms/MainForm.DeviceControl.cs:78; Forms/MainForm.SnapshotRead.cs:319 blok (10),Int16
+D292,292,40293,Ordel_SetValue,Tek word,Int16,Okuma + Yazma,3,Forms/MainForm.SnapshotRead.cs:270; Forms/MainForm.SnapshotRead.cs:270 blok (1); Forms/MainForm.Wiring.cs:407,Int16
+D294,294,40295,Ordel_Instant_Value,Tek word,Int16,Okuma,2,Forms/MainForm.Polling.cs:262 blok (1); Forms/MainForm.Polling.cs:263,Int16
+D350,350,40351,EmergencyStop,Tek word,Int16,Okuma,2,Forms/MainForm.EmergencyStop.cs:22; Forms/MainForm.EmergencyStop.cs:22 blok (1),"0=Not pressed, 1=Pressed"
